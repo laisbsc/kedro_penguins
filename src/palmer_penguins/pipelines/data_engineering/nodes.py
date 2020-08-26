@@ -36,6 +36,16 @@ from typing import Any, Dict
 import pandas as pd
 
 
+def make_scatter_plot(df: pd.DataFrame):
+    import matplotlib.pyplot as plt
+    fig, ax = plt.subplots()
+    for i, species in enumerate(list(df.species.unique())):
+        df[df['species'] == species].plot.scatter\
+            (x="culmen_length_mm", y="culmen_depth_mm", label=species, color=f"C{i}", ax=ax)
+        fig.set_size_inches(12, 12)
+        return fig
+
+
 def split_data(data: pd.DataFrame, example_test_data_ratio: float) -> Dict[str, Any]:
     """Node for splitting the Palmer Penguins data set into training and test
     sets, each split into features and labels.
@@ -44,11 +54,13 @@ def split_data(data: pd.DataFrame, example_test_data_ratio: float) -> Dict[str, 
     automatically when the pipeline is executed and it is time to run this node.
     """
     data.columns = [
+        "target",
+        "island",
         "culmen_length_mm",
-        "culmen_depth",
+        "culmen_depth_mm",
         "flipper_length_mm",
         "body_mass_g",
-        "target",
+        "sex",
     ]
     classes = sorted(data["target"].unique())
     # One-hot encoding for the target variable
@@ -64,9 +76,9 @@ def split_data(data: pd.DataFrame, example_test_data_ratio: float) -> Dict[str, 
     test_data = data.iloc[:n_test, :].reset_index(drop=True)
 
     # Split the data to features and labels
-    train_data_x = training_data.loc[:, "culmen_length":"culmen_depth"]
+    train_data_x = training_data.loc[:, "culmen_length_mm":"culmen_depth_mm"]
     train_data_y = training_data[classes]
-    test_data_x = test_data.loc[:, "culmen_length":"culmen_depth"]
+    test_data_x = test_data.loc[:, "culmen_length_mm":"culmen_depth_mm"]
     test_data_y = test_data[classes]
 
     # When returning many variables, it is a good practice to give them names:

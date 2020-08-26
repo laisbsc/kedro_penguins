@@ -7,6 +7,10 @@ size_penguins:
   type: pandas.CSVDataSet
   filepath: data/01_raw/penguins_size.csv
 
+penguins_scatter_plot:
+  type: kedro.extras.datasets.matplotlib.MatplotlibWriter
+  filepath: data/scatter_plot.png
+
 iter_penguins:
   type: pandas.CSVDataSet
   filepath: data/01_raw/penguins_iter.csv
