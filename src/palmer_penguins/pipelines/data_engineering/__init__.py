@@ -25,33 +25,10 @@
 #
 # See the License for the specific language governing permissions and
 # limitations under the License.
+"""Example code for the nodes in the example pipeline. This code is meant
+just for illustrating basic Kedro features.
 
-"""Construction of the master pipeline.
+PLEASE DELETE THIS FILE ONCE YOU START WORKING ON YOUR OWN PROJECT!
 """
 
-from typing import Dict
-
-from kedro.pipeline import Pipeline
-
-from palmer_penguins.pipelines import data_engineering as de
-from palmer_penguins.pipelines import data_science as ds
-
-def create_pipelines(**kwargs) -> Dict[str, Pipeline]:
-    """Create the project's pipeline.
-
-    Args:
-        kwargs: Ignore any additional arguments added in the future.
-
-    Returns:
-        A mapping from a pipeline name to a ``Pipeline`` object.
-
-    """
-
-    data_engineering_pipeline = de.create_pipeline()
-    data_science_pipeline = ds.create_pipeline()
-
-    return {
-        "de": data_engineering_pipeline,
-        "ds": data_science_pipeline,
-        "__default__": data_engineering_pipeline + data_science_pipeline,
-    }
+from .pipeline import create_pipeline  # NOQA
