@@ -26,10 +26,8 @@ Thank you everyone for gathering this info and for making it widely available. S
 Data are available by CC-0 license in accordance with the Palmer Station LTER Data Policy and the LTER Data Access Policy for Type I data.
 Please cite this data using: Gorman KB, Williams TD, Fraser WR (2014) Ecological Sexual Dimorphism and Environmental Variability within a Community of Antarctic Penguins (Genus Pygoscelis). PLoS ONE 9(3): e90081. doi:10.1371/journal.pone.0090081
 
-
-
 ### Meet the penguins:
-
+![image of the Penguins](https://github.com/allisonhorst/palmerpenguins/blob/master/man/figures/lter_penguins.png)
 
 > Artwork: @allison_horst
 
@@ -37,6 +35,8 @@ What are culmen length & depth?
 The culmen is "the upper ridge of a bird's beak" (definition from Oxford Languages).
 
 For this penguin data, the culmen length and culmen depth are measured as shown below (thanks Kristen Gorman for clarifying!):
+![Penguin parts](https://github.com/allisonhorst/palmerpenguins/blob/master/man/figures/culmen_depth.png)  
+
 ## Overview
 
 This is your new Kedro project, which was generated using `Kedro 0.16.3` by running:

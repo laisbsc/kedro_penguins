@@ -8,7 +8,7 @@ This modular pipeline splits the incoming data into the train and test subsets (
 
 ## Pipeline inputs
 
-### `example_iris_data`
+### `size_penguins`
 
 |      |                    |
 | ---- | ------------------ |
