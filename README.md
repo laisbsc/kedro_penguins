@@ -1,5 +1,42 @@
 # palmer_penguins
 
+The Palmer Archipelago (Antarctica) Penguins dataset was made available by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) and the [Palmer Station Antartica LTER](https://pal.lternet.edu/), a member of the [Long Term Ecological Research Network (LTRN)](https://lternet.edu).
+
+The palmerpenguins package contains two datasets.
+In this Kedro-example we will use only the `penguins_size.csv` file.
+
+#### Variables:
+- species: penguin species (Chinstrap, Adélie, or Gentoo)
+- culmen_length_mm: culmen length (mm)
+- culmen_depth_mm: culmen depth (mm)
+- flipper_length_mm: flipper length (mm)
+- body_mass_g: body mass (g)
+- island: island name (Dream, Torgersen, or Biscoe) in the Palmer Archipelago (Antarctica)
+- sex: penguin gender
+** `penguins_iter.csv`: Original combined data for 3 penguin species. 
+
+> Please refer to the official [Github page](https://github.com/allisonhorst/palmerpenguins) for details and license information.
+
+
+Data were collected and made available by Dr. Kristen Gorman and the Palmer Station, Antarctica LTER, a member of the Long Term Ecological Research Network.
+
+Thank you everyone for gathering this info and for making it widely available. Special thanks to Dr. Gorman, Palmer Station LTER and the LTER Network! Special thanks to Marty Downs.
+
+#### License & citation
+Data are available by CC-0 license in accordance with the Palmer Station LTER Data Policy and the LTER Data Access Policy for Type I data.
+Please cite this data using: Gorman KB, Williams TD, Fraser WR (2014) Ecological Sexual Dimorphism and Environmental Variability within a Community of Antarctic Penguins (Genus Pygoscelis). PLoS ONE 9(3): e90081. doi:10.1371/journal.pone.0090081
+
+
+
+### Meet the penguins:
+
+
+> Artwork: @allison_horst
+
+What are culmen length & depth?
+The culmen is "the upper ridge of a bird's beak" (definition from Oxford Languages).
+
+For this penguin data, the culmen length and culmen depth are measured as shown below (thanks Kristen Gorman for clarifying!):
 ## Overview
 
 This is your new Kedro project, which was generated using `Kedro 0.16.3` by running:
@@ -29,7 +66,8 @@ To install them, run:
 ```
 kedro install
 ```
-
+> NOTE: if you have installed the latest version of Kedro (at the moment, 0.16.4), running the above command will downgrade your version.  
+>You can upgrade Kedro to the latest available version with `pip install kedro -U` 
 ## Running Kedro
 
 You can run your Kedro project with:
@@ -56,6 +94,7 @@ In order to use notebooks in your Kedro project, you need to install Jupyter:
 ```
 pip install jupyter
 ```
+> NOTE: only needed if not using `conda`.
 
 For using Jupyter Lab, you need to install it:
 
@@ -67,7 +106,8 @@ After installing Jupyter, you can start a local notebook server:
 
 ```
 kedro jupyter notebook
-```
+```  
+or simply run your regular `jupyter notebook`.
 
 You can also start Jupyter Lab:
 
