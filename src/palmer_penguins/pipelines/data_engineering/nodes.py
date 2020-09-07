@@ -62,6 +62,7 @@ def split_data(data: pd.DataFrame, example_test_data_ratio: float) -> Dict[str, 
         "body_mass_g",
         "sex",
     ]
+
     classes = sorted(data["target"].unique())
     # One-hot encoding for the target variable
     data = pd.get_dummies(data, columns=["target"], prefix="", prefix_sep="")

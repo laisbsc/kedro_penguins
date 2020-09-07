@@ -1,15 +1,18 @@
 from kedro.io.core import AbstractDataSet, DataSetError
 
-class ByteDataSet(AbstractDataSet):
+from base64 import b64encode
+
+
+class Base64DataSet(AbstractDataSet):
     def __init__(self, filepath):
         self._filepath = filepath
 
-    def _save(self, _):
-        raise DataSetError('Read Only DataSet')
+    def _save(self, binary_data):
+        with open(str(self._filepath), 'w') as f:
+            f.write(b64encode(binary_data).decode('utf8'))
 
     def _load(self):
-        with open(str(self._filepath), 'binary') as f:
-            return f.read()
+        raise DataSetError('Write Only DataSet')
 
     def _describe(self):
         return dict(filepath=self._filepath)

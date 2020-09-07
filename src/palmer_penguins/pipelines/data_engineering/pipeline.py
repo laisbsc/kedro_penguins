@@ -43,8 +43,13 @@ def create_pipeline(**kwargs):
             node(
                 make_scatter_plot,
                 inputs="size_penguins",
-                outputs='penguins_scatter_plot'
-                ),
+                outputs='penguins_scatter_plot@matplotlib'
+            ),
+            node(
+                lambda x: x, #identity function since there's just encoding (no node)
+                inputs="penguins_scatter_plot@byteform",
+                outputs="penguins_scatter_plot_base64",
+            ),
             node(
                 split_data,
                 ["size_penguins", "params:example_test_data_ratio"],
