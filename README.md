@@ -15,7 +15,7 @@ The first is locally hosted under `data/01_raw` and the later on the AWS Cloud, 
 - flipper_length_mm: flipper length (mm)
 - body_mass_g: body mass (g)
 - island: island name (Dream, Torgersen, or Biscoe) in the Palmer Archipelago (Antarctica)
-- sex: penguin gender
+- sex: penguin gender  
 ** `penguins_iter.csv`: Original combined data for 3 penguin species.
 
 > Please refer to the official [Github page](https://github.com/allisonhorst/palmerpenguins) for details and license information.
@@ -51,14 +51,14 @@ The aim of this example is to show users how to:
  - Use Kedro Hooks to expand the project with the Great Expectations plugin. [code and docs]
 
 ### Table of contents
-1. [Rules and guidelines for Kedro template](#Rules and guidelines for best practice)
+1. [Rules and guidelines for Kedro template](#rules-and-guidelines-for-best-practice)
 2. [Tutorial]()
-    * [Creating a new project](#Creating a new project)
-    * [Installing dependencies](#Installing dependencies)
-    * [Loading data to `catalog.yml` from AWS S3 bucket](#Load data to catalog.yml from AWS S3 bucket)
-    * [Generate a scatter plot using a Kedro node]()
-    * [Convert plots into binary and on base64  with transcode]()
-    * [Using Kedro Hooks to integrate Great Expectations plugin]()
+    * [Creating a new project](#Creating-a-new-project)
+    * [Installing dependencies](#Installing-dependencies)
+    * [Loading data to `catalog.yml` from AWS S3 bucket](#Load-data-to-catalog.yml-from-AWS-S3-bucket)
+    * [Generate a scatter plot using a Kedro node](#Generate-a-scatter-plot-graph-using-a-node-function)
+    * [Convert plots into binary and on base64  with transcode](#Convert-the-plots-into-binary-and-on-base64-by-using-transcode)
+    * [Using Kedro Hooks to integrate Great Expectations plugin](#Kedro-Hooks-integration-with-Great-Expectations)
 3. [Add-ons](#Add-ons)
     
     
