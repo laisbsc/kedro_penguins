@@ -49,7 +49,6 @@ The culmen is "the upper ridge of a bird's beak" (definition from Oxford Languag
 For this penguin data, the culmen length and culmen depth are measured as shown below (thanks Kristen Gorman for clarifying!):
 ![Penguin parts](https://github.com/allisonhorst/palmerpenguins/blob/master/man/figures/culmen_depth.png)  
 
-<<<<<<< HEAD
 ## Overview
 
 This Kedro project was generated using `Kedro 0.16.3` by running:
@@ -69,9 +68,6 @@ This repository uses the `size_penguins.csv` dataset, hosted remotely.  The aim 
 
 
 ## Kedro template - rules and guidelines
-
-In order to get the best out of the template:
->>>>>>> 9b0813163fd289e616d9bba31f7081d4c9b335bb
 
 To get the best out of this template:
  * Please don't remove any lines from the `.gitignore` file we provide
@@ -202,7 +198,7 @@ To learn more about Great Expectations, have a look at the [documentation page](
  
 
 
-```buildoutcfg
+```
 pip install great_expectation
 ```
 
