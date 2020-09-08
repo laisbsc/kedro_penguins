@@ -46,7 +46,7 @@ def create_pipeline(**kwargs):
                 outputs='penguins_scatter_plot@matplotlib'
             ),
             node(
-                lambda x: x, #identity function since there's just encoding (no node)
+                lambda x: x,  # identity function since the function just encodes
                 inputs="penguins_scatter_plot@byteform",
                 outputs="penguins_scatter_plot_base64",
             ),

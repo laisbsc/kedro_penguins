@@ -39,18 +39,21 @@ For this penguin data, the culmen length and culmen depth are measured as shown 
 
 ## Overview
 
-This is your new Kedro project, which was generated using `Kedro 0.16.3` by running:
+This Kedro project was generated using `Kedro 0.16.3` by running:
 
 ```
 kedro new
 ```
 
-Take a look at the [documentation](https://kedro.readthedocs.io) to get started.
+This repository uses the `size_penguins.csv` dataset, hosted remotely.  The aim of this repo is to show the user how to:
+ - Load 'remote' data, in this case, a `.csv` file hosted in a AWS S3 bucket. [check!]
+ - Plot a scatter graph with the data with `kedro run`. [write the docs]
+ - Encode and decode the generated image ('scatter_plot.png') in a node using Transcode [write the docs]
+ - Use Kedro Hooks to expand the project with plugins, in this case the Great Expectations plugin. [code and docs]
 
-## Rules and guidelines
+## Rules and guidelines for best practice
 
-In order to get the best out of the template:
-
+To get the best out of this template:
  * Please don't remove any lines from the `.gitignore` file we provide
  * Make sure your results can be reproduced by following a data engineering convention, e.g. the one we suggest [here](https://kedro.readthedocs.io/en/stable/06_resources/01_faq.html#what-is-data-engineering-convention)
  * Don't commit any data to your repository
@@ -58,16 +61,49 @@ In order to get the best out of the template:
  * Keep all credentials or local configuration in `conf/local/`
 
 ## Installing dependencies
+Before we start, add the `Great Expectations` plugin to your project dependencies in `src/requirements.txt` for `pip` installation and `src/environment.yml` for `conda` installation.
 
-Declare any dependencies in `src/requirements.txt` for `pip` installation and `src/environment.yml` for `conda` installation.
+```
+great-expectations==0.12.1
+```
 
-To install them, run:
+To install all dependencies, run:
 
 ```
 kedro install
 ```
-> NOTE: if you have installed the latest version of Kedro (at the moment, 0.16.4), running the above command will downgrade your version.  
->You can upgrade Kedro to the latest available version with `pip install kedro -U` 
+> NOTE: if you have installed the latest version of Kedro (at the moment, 0.16.4), running the above command will downgrade your version. If you wish to remove this feature, change the version of Kedro required in `requirements.txt`.
+> Alternatively, you can upgrade Kedro to the latest available version with `pip install kedro -U`  
+
+## Load data to `catalog.yml` from AWS S3 bucket (using credentials and load args)
+1. If using PyCharm or VSCode, drag the `credentials.yml` file from `./base` and drop it into `./local`. This file will hold the S3 credentials to access your account. DO NOT SHARE THOSE CREDENTIALS.  
+All files in the `./local` folder will be ignored by git, which by default will protect your credentials from being shown in public.
+Add the credentials following the steps on Example 4 on the [this page of the docs](https://kedro.readthedocs.io/en/stable/05_data/01_data_catalog.html). Add a wrapper to the credentials and your file should look something like this:
+[add screenshot code > credentials S3]
+ 
+2.In `./base/catalog.yml` add the catalog entries for your dataset:
+```buildoutcfg
+size_penguins:
+  type: pandas.CSVDataSet
+  filepath: s3://penguins-dataset-iter/penguins_size.csv
+  credentials: dev_s3
+  load_args:
+    sep: ','
+    na_values: ['#NA', NA]
+```
+ 
+3. Test your data using IPython. On terminal type:
+``` commandline
+    kedro ipython
+```
+Once in the Ipython shell, check if the data is loads successfully by running:
+```commandline
+    context.catalog.load('size_penguins')
+```
+Once you see the table on the output, be sure all is working well.
+
+
+
 ## Running Kedro
 
 You can run your Kedro project with:
@@ -76,15 +112,7 @@ You can run your Kedro project with:
 kedro run
 ```
 
-## Testing Kedro
 
-Have a look at the file `src/tests/test_run.py` for instructions on how to write your tests. You can run your tests with the following command:
-
-```
-kedro test
-```
-
-To configure the coverage threshold, please have a look at the file `.coveragerc`.
 
 
 ## Working with Kedro from notebooks
@@ -124,26 +152,39 @@ kedro ipython
 Running Jupyter or IPython this way provides the following variables in
 scope: `proj_dir`, `proj_name`, `conf`, `io`, `parameters` and `startup_error`.
 
-### Converting notebook cells to nodes in a Kedro project
-
-Once you are happy with a notebook, you may want to move your code over into the Kedro project structure for the next stage in your development. This is done through a mixture of [cell tagging](https://jupyter-notebook.readthedocs.io/en/stable/changelog.html#cell-tags) and Kedro CLI commands.
-
-By adding the `node` tag to a cell and running the command below, the cell's source code will be copied over to a Python file within `src/<package_name>/nodes/`.
-```
-kedro jupyter convert <filepath_to_my_notebook>
-```
-> *Note:* The name of the Python file matches the name of the original notebook.
-
-Alternatively, you may want to transform all your notebooks in one go. To this end, you can run the following command to convert all notebook files found in the project root directory and under any of its sub-folders.
-```
-kedro jupyter convert --all
-```
 
 ### Ignoring notebook output cells in `git`
 
 In order to automatically strip out all output cell contents before committing to `git`, you can run `kedro activate-nbstripout`. This will add a hook in `.git/config` which will run `nbstripout` before anything is committed to `git`.
 
-> *Note:* Your output cells will be left intact locally.
+> *Note:* Your output cells will be left intact locally.  
+>
+>## Testing Kedro
+
+Have a look at the file `src/tests/test_run.py` for instructions on how to write your tests. You can run your tests with the following command:
+
+```
+kedro test
+```
+
+To configure the coverage threshold, please have a look at the file `.coveragerc`.
+
+## Kedro Hooks - integration with Great Expectations
+In this example, we will integrate the Great Expectations plugin to Kedro using Kedro Hooks.
+
+### Kedro Hooks
+Allows the user to 'hook' several functionalities to their Kedro project in an easy and consistent manner.
+For more details on Kedro Hooks, check out the [documentation](https://kedro.readthedocs.io/en/stable/07_extend_kedro/04_hooks.html).
+
+### Great Expectations
+Has the ability to automatically profile and validate the data, as well as to generate documentation based on the expectations.
+To learn more about Great Expectations, have a look at the [documentation page](https://docs.greatexpectations.io/en/latest/intro.html).  
+ 
+
+
+```buildoutcfg
+pip install great_expectation
+```
 
 ## Package the project
 

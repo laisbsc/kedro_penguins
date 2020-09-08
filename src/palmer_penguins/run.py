@@ -32,6 +32,7 @@ from typing import Dict
 
 from kedro.framework.context import KedroContext, load_package_context
 from kedro.pipeline import Pipeline
+from kedro_wings import KedroWings
 
 from palmer_penguins.pipeline import create_pipelines
 
@@ -40,6 +41,10 @@ class ProjectContext(KedroContext):
     """Users can override the remaining methods from the parent class here,
     or create new ones (e.g. as required by plugins)
     """
+
+    hooks = (
+        KedroWings(),
+    )
 
     project_name = "palmer_penguins"
     # `project_version` is the version of kedro used to generate the project
