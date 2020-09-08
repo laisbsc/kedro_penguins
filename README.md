@@ -52,13 +52,13 @@ The aim of this example is to show users how to:
 
 ### Table of contents
 1. [Rules and guidelines for Kedro template](#rules-and-guidelines-for-best-practice)
-2. [Tutorial]()
+2. Tutorial
     * [Creating a new project](#Creating-a-new-project)
     * [Installing dependencies](#Installing-dependencies)
-    * [Loading data to `catalog.yml` from AWS S3 bucket](#Load-data-to-catalog.yml-from-AWS-S3-bucket)
+    * [Loading data to `catalog.yml` from AWS S3 bucket](#load-data-to-catalogyml-from-aws-s3-bucket-using-credentials-and-load-args)
     * [Generate a scatter plot using a Kedro node](#Generate-a-scatter-plot-graph-using-a-node-function)
     * [Convert plots into binary and on base64  with transcode](#Convert-the-plots-into-binary-and-on-base64-by-using-transcode)
-    * [Using Kedro Hooks to integrate Great Expectations plugin](#Kedro-Hooks-integration-with-Great-Expectations)
+    * [Using Kedro Hooks to integrate Great Expectations plugin](#kedro-hooks---integration-with-great-expectations)
 3. [Add-ons](#Add-ons)
     
     
@@ -131,7 +131,7 @@ Once you see the data on the CLI output, all is working well.
  [write the docs]
 
 
-## Kedro Hooks - integration with Great Expectations
+## Kedro Hooks integration with Great Expectations
 In this example, we will integrate the Great Expectations plugin to Kedro using Hooks.
 
 ### Kedro Hooks
@@ -139,10 +139,11 @@ Allows the user to 'hook' several functionalities to their Kedro project in an e
 For more details on Kedro Hooks, check out the [documentation](https://kedro.readthedocs.io/en/stable/07_extend_kedro/04_hooks.html).
 
 ### Great Expectations
-Has the ability to automatically profile and validate the data, as well as to generate documentation based on the expectations.
+Provides the ability to automatically profile and validate the data, as well as to generate documentation based on the expectations.
+In this tutorial we will generate a JSON file with the expectations.
 To learn more about Great Expectations, have a look at the [documentation page](https://docs.greatexpectations.io/en/latest/intro.html).  
  
-> [Why use them together.]
+> [Why use them together?]
  
 #### Create GE folder within root directory 
 The following command will generate a new directory. The folder structure will be shown on the CLI.

@@ -34,7 +34,7 @@ pandas_penguins_data:
 
 spark_penguins_data:
   type: spark.SparkDataSet
-  filepath: data/01_raw/iris.csv
+  filepath: data/01_raw/penguins_iter.csv
   file_format: csv
   load_args:
-    header: True
+    header: true
