@@ -83,8 +83,8 @@ kedro install
 1. If using PyCharm or VSCode, drag the `credentials.yml` file from `./base` and drop it into `./local`. This file will hold the S3 credentials to access your account. DO NOT SHARE THESE CREDENTIALS.  
 All files in the `./local` folder will be ignored by git, which by default will protect your credentials from being public.
 Add the credentials following the steps on 'Example 4' on the [this documentation page](https://kedro.readthedocs.io/en/stable/05_data/01_data_catalog.html).  
-Add a wrapper to the credentials and your code should look something like this:
-![image](Users/lais_carvalho/Desktop/Screenshots/tutorial_penguins)
+Add a wrapper `client_kwargs` to the credentials and your code should look something like this:
+![picture](./docs/images/Screenshot%202020-09-08%20at%2000.15.30.png)
  
 2.In `./base/catalog.yml` add the catalog entries for your dataset:
 ```
@@ -105,15 +105,15 @@ Once in the IPython shell, check if the data is loads successfully by running:
 ```
     context.catalog.load('size_penguins')
 ```
-Once you see the data table on the CLI output, all is working well.
+Once you see the data on the CLI output, all is working well.
 
 
 
  ## Generate a scatter plot graph using a node function
- 
+ [write the docs]
  
  ## Convert the plots into binary and on base64 by using transcode
-
+ [write the docs]
 
 
 
@@ -200,8 +200,7 @@ Next prompt will ask about profiling, type `y`. Since the csv file is in our Dat
 The Expectations suite will create a folder path and save the expectations as a JSON file. The file will describe all the expectations which will be asserted on this dataset.  
 
 
-
-
+Typying `y` on the next prompt will open the GE documentation with the data profiling analysis on a browser page. The Walkthrough window shown is great to get you more familiar with the suite setup.
 
 
 

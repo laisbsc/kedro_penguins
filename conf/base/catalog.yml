@@ -27,7 +27,14 @@ penguins_scatter_plot_base64:
   type: palmer_penguins.io.base64_dataset.Base64DataSet
   filepath: data/scatter_plot_64.txt
 
-## local dataset 2  [not currently used]
-#iter_penguins:
-#  type: pandas.CSVDataSet
-#  filepath: data/01_raw/penguins_iter.csv
+# local dataset 2
+pandas_penguins_data:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/penguins_iter.csv
+
+spark_penguins_data:
+  type: spark.SparkDataSet
+  filepath: data/01_raw/iris.csv
+  file_format: csv
+  load_args:
+    header: True
