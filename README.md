@@ -145,8 +145,9 @@ To learn more about Great Expectations, have a look at the [documentation page](
  
 > [Why use them together?]
  
-#### Create GE folder within root directory 
-The following command will generate a new directory. The folder structure will be shown on the CLI.
+#### Create GE folders template
+The following command will generate a new directory. The folder structure will be shown on the CLI upon execution.  
+From the `src` folder, run:
 ```
 great_expectations init
 ```
@@ -161,7 +162,14 @@ Next prompt will ask about profiling, type `y`. Since the csv file is in our Dat
 The Expectations suite will create a folder path and save the expectations as a JSON file. The file will describe all the expectations which will be asserted on this dataset.  
 
 
-Typying `y` on the next prompt will open the GE documentation with the data profiling analysis on a browser page. The Walkthrough window shown is great to get you more familiar with the suite setup.
+Typying `y` on the next prompt will open the GE documentation with the data profiling analysis on a browser page.  
+The 'Walkthrough' window shown is great to get you more familiar with the suite setup.
+
+#### Creating a Custom dataset
+Under `src/<palmer_penguins>/hooks` create a python file. In this project, the file is named `great_expectations_hooks.py`. This file will hold the contents of a custom Dataset that will validate your data inputs and generate the Great Expectations validation.
+
+
+
 
 
 
