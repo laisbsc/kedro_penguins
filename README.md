@@ -39,21 +39,30 @@ The culmen is "the upper ridge of a bird's beak" (definition from Oxford Languag
 For this penguin data, the culmen length and culmen depth are measured as shown below (thanks Kristen Gorman for clarifying!):
 ![Penguin parts](https://github.com/allisonhorst/palmerpenguins/blob/master/man/figures/culmen_depth.png)  
 
+
 ## The Project
 
-This Kedro project was generated using `Kedro 0.16.3` by running:
-
-```
-kedro new
-```
-
-This repository uses the `size_penguins.csv` dataset, hosted on a Cloud env and the `iter_penguins.csv`, hosted locally.
+### Aim
+This repository uses the `size_penguins.csv` dataset, hosted on AWS cloud env and the `iter_penguins.csv`, hosted locally.
 The aim of this example is to show users how to:
  - Load 'remote' data, in this case, a `.csv` file hosted in a AWS S3 bucket.
  - Plot a scatter graph with the data using `kedro run`. [write the docs]
- - Encode and decode the generated image ('scatter_plot.png') in a node using Transcode [write the docs]
- - Use Kedro Hooks to expand the project with plugins, in this case the Great Expectations plugin. [code and docs]
- 
+ - Convert the generated image ('scatter_plot.png') in a node using Transcode [write the docs]
+ - Use Kedro Hooks to expand the project with the Great Expectations plugin. [code and docs]
+
+### Table of contents
+1. [Rules and guidelines for Kedro template](#Rules and guidelines for best practice)
+2. [Tutorial]()
+    * [Creating a new project](#Creating a new project)
+    * [Installing dependencies](#Installing dependencies)
+    * [Loading data to `catalog.yml` from AWS S3 bucket](#Load data to catalog.yml from AWS S3 bucket)
+    * [Generate a scatter plot using a Kedro node]()
+    * [Convert plots into binary and on base64  with transcode]()
+    * [Using Kedro Hooks to integrate Great Expectations plugin]()
+3. [Add-ons](#Add-ons)
+    
+    
+
 
 ## Rules and guidelines for best practice
 To get the best out of this template:
@@ -63,15 +72,21 @@ To get the best out of this template:
  * Don't commit any credentials or local configuration to your repository
  * Keep all credentials or local configuration in `conf/local/`
 
+
+## Creating a new project
+
+This Kedro project was generated using `Kedro 0.16.3` by running:
+```
+kedro new
+```
+
 ## Installing dependencies
 Before we start, add the `Great Expectations` plugin to your project dependencies in `src/requirements.txt` for `pip` installation and `src/environment.yml` for `conda` installation.
-
 ```
 great-expectations==0.12.1
 ```
 
 To install the dependencies, run:
-
 ```
 kedro install
 ```
@@ -79,7 +94,7 @@ kedro install
 > Alternatively, you can upgrade Kedro to the latest available version with `pip install kedro -U`.  
 
 
-## Load data to `catalog.yml` from AWS S3 bucket (using credentials and load args)
+## Load data to `catalog.yml` from AWS S3 bucket (using `credentials` and `load args`)
 1. If using PyCharm or VSCode, drag the `credentials.yml` file from `./base` and drop it into `./local`. This file will hold the S3 credentials to access your account. DO NOT SHARE THESE CREDENTIALS.  
 All files in the `./local` folder will be ignored by git, which by default will protect your credentials from being public.
 Add the credentials following the steps on 'Example 4' on the [this documentation page](https://kedro.readthedocs.io/en/stable/05_data/01_data_catalog.html).  
@@ -108,12 +123,52 @@ Once in the IPython shell, check if the data is loads successfully by running:
 Once you see the data on the CLI output, all is working well.
 
 
-
  ## Generate a scatter plot graph using a node function
  [write the docs]
  
  ## Convert the plots into binary and on base64 by using transcode
+ Explain the reason why you would like to do this.
  [write the docs]
+
+
+## Kedro Hooks - integration with Great Expectations
+In this example, we will integrate the Great Expectations plugin to Kedro using Hooks.
+
+### Kedro Hooks
+Allows the user to 'hook' several functionalities to their Kedro project in an easy and consistent manner.
+For more details on Kedro Hooks, check out the [documentation](https://kedro.readthedocs.io/en/stable/07_extend_kedro/04_hooks.html).
+
+### Great Expectations
+Has the ability to automatically profile and validate the data, as well as to generate documentation based on the expectations.
+To learn more about Great Expectations, have a look at the [documentation page](https://docs.greatexpectations.io/en/latest/intro.html).  
+ 
+> [Why use them together.]
+ 
+#### Create GE folder within root directory 
+The following command will generate a new directory. The folder structure will be shown on the CLI.
+```
+great_expectations init
+```
+Type `y` and press enter.
+
+Next step is to configure our data source. Type `y` on the next prompt. And `y` again.
+
+For this project, we will use Pandas. Type `1` on the next prompt and `1` again.  
+Enter the path for the folder where your data is stored. In this project, we will be using the `iter_penguins.csv`, hosted locally at `data/01_raw`.  
+Following, the prompt will ask for a Datasource short name. Enter your name of choice (I chose `pandas_penguins`) and `y` to confirm.  
+Next prompt will ask about profiling, type `y`. Since the csv file is in our Datasource, typing `1` will return the list of files available. Type `1` to choose the file.  
+The Expectations suite will create a folder path and save the expectations as a JSON file. The file will describe all the expectations which will be asserted on this dataset.  
+
+
+Typying `y` on the next prompt will open the GE documentation with the data profiling analysis on a browser page. The Walkthrough window shown is great to get you more familiar with the suite setup.
+
+
+
+
+
+
+
+
 
 
 
@@ -124,11 +179,19 @@ You can run your Kedro project with:
 ```
 kedro run
 ```
+If you are interested on knowing more about the integration between Kedro and Great Expectations, have a look at `kedro-great`,
+a [Python plugin](https://pypi.org/project/kedro-great/) desinged by [Tam-Sanh Nguyen](https://pypi.org/user/tamu/) to facilitate the integration between Kedro and GE.
+
+"Hold yourself accountable to Great Expectations.
+Never have fear of data silently changing ever again."
 
 
+This is the end of the tutorial.
 
+## Add-ons
+This section contains the documentation add-ons that one might consider using. 
 
-## Working with Kedro from notebooks
+### Working with Kedro from notebooks
 
 In order to use notebooks in your Kedro project, you need to install Jupyter:
 
@@ -173,40 +236,10 @@ In order to automatically strip out all output cell contents before committing t
 > *Note:* Your output cells will be left intact locally.  
 
 
-## Kedro Hooks - integration with Great Expectations
-In this example, we will integrate the Great Expectations plugin to Kedro using Kedro Hooks.
 
-### Kedro Hooks
-Allows the user to 'hook' several functionalities to their Kedro project in an easy and consistent manner.
-For more details on Kedro Hooks, check out the [documentation](https://kedro.readthedocs.io/en/stable/07_extend_kedro/04_hooks.html).
-
-### Great Expectations
-Has the ability to automatically profile and validate the data, as well as to generate documentation based on the expectations.
-To learn more about Great Expectations, have a look at the [documentation page](https://docs.greatexpectations.io/en/latest/intro.html).  
- 
-#### Create GE folder within root directory 
-The following command will generate a new directory. The folder structure will be shown on the CLI.
-```
-great_expectations init
-```
-Type `y` and press enter.
-
-Next step is to configure our data source. Type `y` on the next prompt. And `y` again.
-
-For this project, we will use Pandas. Type `1` on the next prompt and `1` again.  
-Enter the path for the folder where your data is stored. In this project, we will be using the `iter_penguins.csv`, hosted locally at `data/01_raw`.  
-Following, the prompt will ask for a Datasource short name. Enter your name of choice (I chose `pandas_penguins`) and `y` to confirm.  
-Next prompt will ask about profiling, type `y`. Since the csv file is in our Datasource, typing `1` will return the list of files available. Type `1` to choose the file.  
-The Expectations suite will create a folder path and save the expectations as a JSON file. The file will describe all the expectations which will be asserted on this dataset.  
-
-
-Typying `y` on the next prompt will open the GE documentation with the data profiling analysis on a browser page. The Walkthrough window shown is great to get you more familiar with the suite setup.
-
-
-
-## Testing Kedro
-
-Have a look at the file `src/tests/test_run.py` for instructions on how to write your tests. You can run your tests with the following command:
+### Testing your project
+Kedro supports tests with... by default.
+For instructions on how to write your tests, have a look at the file `src/tests/test_run.py` . You can run your tests with the following command:
 
 ```
 kedro test
@@ -214,7 +247,7 @@ kedro test
 
 To configure the coverage threshold, please have a look at the file `.coveragerc`.
 
-## Package the project
+### Package the project
 
 In order to package the project's Python code in `.egg` and / or a `.wheel` file, you can run:
 
@@ -224,7 +257,7 @@ kedro package
 
 After running that, you can find the two packages in `src/dist/`.
 
-## Building API documentation
+### Building API documentation
 
 To build API docs for your code using Sphinx, run:
 
@@ -234,7 +267,7 @@ kedro build-docs
 
 See your documentation by opening `docs/build/html/index.html`.
 
-## Building the project requirements
+### Building the project requirements
 
 To generate or update the dependency requirements for your project, run:
 
