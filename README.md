@@ -1,5 +1,17 @@
 # palmer_penguins
 
+## Overview
+
+This is your new Kedro project, which was generated using `Kedro 0.16.3` by running:
+
+```
+kedro new
+```
+
+Take a look at the [documentation](https://kedro.readthedocs.io) to get started.  More info below.
+
+## About the Dataset
+
 The Palmer Archipelago (Antarctica) Penguins dataset was made available by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) and the [Palmer Station Antartica LTER](https://pal.lternet.edu/), a member of the [Long Term Ecological Research Network (LTRN)](https://lternet.edu).
 
 The palmerpenguins package contains two datasets.
@@ -20,7 +32,7 @@ In this Kedro-example we will use only the `penguins_size.csv` file.
 
 Data were collected and made available by Dr. Kristen Gorman and the Palmer Station, Antarctica LTER, a member of the Long Term Ecological Research Network.
 
-Thank you everyone for gathering this info and for making it widely available. Special thanks to Dr. Gorman, Palmer Station LTER and the LTER Network! Special thanks to Marty Downs.
+Thank you everyone for gathering this info and for making it widely available. Special thanks to Dr. Gorman, Palmer Station LTER and the LTER Network and to Marty Downs.
 
 #### License & citation
 Data are available by CC-0 license in accordance with the Palmer Station LTER Data Policy and the LTER Data Access Policy for Type I data.
@@ -37,6 +49,7 @@ The culmen is "the upper ridge of a bird's beak" (definition from Oxford Languag
 For this penguin data, the culmen length and culmen depth are measured as shown below (thanks Kristen Gorman for clarifying!):
 ![Penguin parts](https://github.com/allisonhorst/palmerpenguins/blob/master/man/figures/culmen_depth.png)  
 
+<<<<<<< HEAD
 ## Overview
 
 This Kedro project was generated using `Kedro 0.16.3` by running:
@@ -52,6 +65,13 @@ This repository uses the `size_penguins.csv` dataset, hosted remotely.  The aim 
  - Use Kedro Hooks to expand the project with plugins, in this case the Great Expectations plugin. [code and docs]
 
 ## Rules and guidelines for best practice
+=======
+
+
+## Kedro template - rules and guidelines
+
+In order to get the best out of the template:
+>>>>>>> 9b0813163fd289e616d9bba31f7081d4c9b335bb
 
 To get the best out of this template:
  * Please don't remove any lines from the `.gitignore` file we provide
