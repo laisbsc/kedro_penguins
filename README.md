@@ -47,9 +47,10 @@ This tutorial is destined for those who have Intermediate level of Python and ha
 This repository uses the `size_penguins.csv` dataset, hosted on AWS cloud env and the `iter_penguins.csv`, hosted locally.
 The aim of this example is to show users how to:
  - Load 'remote' data, in this case, a `.csv` file hosted in a AWS S3 bucket.
- - Plot a scatter graph with the data using `kedro run`. [write the docs]
- - Convert the generated image ('scatter_plot.png') in a node using Transcode [write the docs]
- - Use Kedro Hooks to expand the project with the Great Expectations plugin. Note: this part of the project will use PySpark, which requires Java. To install Java (macOS) type `brew cask install java` on your terminal.[code]
+ - Generate a scatter plot with the data in the catalog with `kedro run`.
+ - Convert the plot ('scatter_plot.png') in a node using Transcode.
+ - Use Kedro Hooks to expand the project with the Great Expectations plugin.  
+   > Note: this part of the project will use PySpark, which requires Java to be installed. To install Java (macOS) type `brew cask install java` on your terminal. [did not work for me - troubleshoot?]
 
 ### Table of contents
 1. [Rules and guidelines for Kedro template](#rules-and-guidelines-for-best-practice)
@@ -99,8 +100,8 @@ kedro install
 1. If using PyCharm or VSCode, drag the `credentials.yml` file from `./base` and drop it into `./local`. This file will hold the S3 credentials to access your account. DO NOT SHARE THESE CREDENTIALS.  
 All files in the `./local` folder will be ignored by git, which by default will protect your credentials from being public.
 Add the credentials following the steps on 'Example 4' on the [this documentation page](https://kedro.readthedocs.io/en/stable/05_data/01_data_catalog.html).  
-Add a wrapper `client_kwargs` to the credentials and your code should look something like this:
-![picture](./docs/images/Screenshot%202020-09-08%20at%2000.15.30.png)
+Add a wrapper `client_kwargs` to the credentials and your code should look something like this:  
+![picture](docs/images/Screenshot%202020-09-08%20at%2000.15.30.png)
  
 2.In `./base/catalog.yml` add the catalog entries for your dataset:
 ```
@@ -134,8 +135,8 @@ from kedro.context import load_context
 context = load_context('../')   #loads the context and catalog from the kedro project
 catalog = context.catalog
 ```
-The following steps will take the dataset, filter it according to the species column and create a scatter plot. Which will be saved in the project folder.
-In the `src/data_engineering/nodes.py` create a new node called `make_scatter_plot` which takes in a pandas dataframe and outputs a figure:
+The following steps will take the dataset, filter it according to the species column and create a scatter plot. The image will be saved in the project folder.  
+In the `src/data_engineering/nodes.py` create a new node called `make_scatter_plot`. This node which takes in a pandas dataframe and output a figure:
 ```
 def make_scatter_plot(df: pd.DataFrame):
     import matplotlib.pyplot as plt
@@ -146,7 +147,7 @@ def make_scatter_plot(df: pd.DataFrame):
         fig.set_size_inches(12, 12)
         return fig
 ```
-Note that the code inside the for loop is similar to the individual functions on the notebook.
+Now, compare the code snippet in the funtion with the one on the notebook (below). Note the similarity between the code inside the for loop above and the individual functions.
 ![image](docs/images/notebook_pic.png) 
 
 Kedro nodes are meant to be pure Python functions. Hence, the `savefig()` cell not being necessary. Instead, we will create a dataset to save the plots. To do so,
@@ -160,17 +161,101 @@ Now, let's combine everything into a data pipeline.
 In the `src/palmer_penguins/pipelines/data_engineering/pipeline.py` file add a node to the pipeline. Start by importing `make_scatter_plot` from `.nodes`. Next, add the node:
 ```
 node(
-                make_scatter_plot,
-                inputs="size_penguins",
-                outputs='penguins_scatter_plot',
-            ),
+    make_scatter_plot,
+    inputs="size_penguins",
+    outputs='penguins_scatter_plot',
+),
 ```
 When `kedro run` is executed, the project will run the `make_scatter_plot` function with the `size_penguins` dataset as input and output the `penguins_scatter_plot` as a `png` file. 
 
  
 ## Convert the plots into binary and on base64 by using transcode
-Explain the reason why you would like to do this.
-[write the docs]
+In this section, we will write a custom dataset that will allow read the data from the output `.png` file as a binary string and convert it to a base64. Such encoding is helpful when there is a need to transfer binary data over a media that only supports textual data transfer. It assures data integrity over the transference.  
+Transcode allows the user to load and save the same file in multiple ways, via its specified `filepath`, by using different DataSet implementations. For more information, check out the [documentation](https://kedro.readthedocs.io/en/stable/05_data/01_data_catalog.html?highlight=transcode#transcoding-datasets).
+
+On the `conf/base/catalog.yml` file add the `@matplotlib` transcode to the `penguins_scatter_plot`, such as:
+```
+penguins_scatter_plot@matplotlib:
+  type: kedro.extras.datasets.matplotlib.MatplotlibWriter
+  filepath: data/scatter_plot.png
+```
+In the `src/palmer_penguins/pipelines/data_engineering/pipeline.py` also add the `@matplotlib` transcode to the output of `make_scatter_plot` node. Your code should now look like this:  
+```
+node(
+    make_scatter_plot,
+    inputs="size_penguins",
+    outputs='penguins_scatter_plot@matplotlib',
+),
+```
+Check if all runs as expected by executing `kedro run`.  
+
+### Writing custom dataset for transcode
+Create a folder under `src/Palper_penguins/io`. Create a file named `byte_dataset.py`. The class ByteDataSetAdd will be a read-only dataset and return a binary string of the input data.
+```
+from kedro.io.core import AbstractDataSet, DataSetError
+
+
+class ByteDataSet(AbstractDataSet):
+    def __init__(self, filepath):
+        self._filepath = filepath
+
+    def _save(self, _):
+        """ Used in the output portion of a node
+        """
+        raise DataSetError('Read Only DataSet')
+
+    def _load(self):
+        """ Used in the input part of the node
+        """
+        with open(str(self._filepath), 'rb') as f:
+            return f.read()
+
+    def _describe(self):
+        """Describe what the dataset is
+        """
+        return dict(filepath=self._filepath)
+```
+Create another file named `base64_dataset.py`. The class `Base64DataSet` will be a write-only dataset and will return the base64 .txt file.
+```
+from kedro.io.core import AbstractDataSet, DataSetError
+
+from base64 import b64encode
+
+
+class Base64DataSet(AbstractDataSet):
+    def __init__(self, filepath):
+        self._filepath = filepath
+
+    def _save(self, binary_data):
+        """Takes the incoming binary data and encodes to base64
+        """
+        with open(str(self._filepath), 'w') as f:
+            f.write(b64encode(binary_data).decode('utf8'))
+
+    def _load(self):
+        raise DataSetError('Write Only DataSet')
+
+    def _describe(self):
+        return dict(filepath=self._filepath)
+```
+Next, add the transcoded data catalog to the `catalog.yml` file, such as:
+```
+penguins_scatter_plot@byteform:     #transcode that reads the .png file as byte string
+  type: palmer_penguins.io.byte_dataset.ByteDataSet
+  filepath: data/scatter_plot.png
+
+penguins_scatter_plot_base64:
+  type: palmer_penguins.io.base64_dataset.Base64DataSet
+  filepath: data/scatter_plot_64.txt
+```
+Now, let's add those datasets into the pipelines. In `src/palmer_penguins/pipelines/data_engineering/pipeline.py` add another pipeline.
+```
+node(
+    lambda x: x,  # identity function since this node just encodes (no function)
+    inputs="penguins_scatter_plot@byteform",
+    outputs="penguins_scatter_plot_base64",
+),
+```
 
 
 ## Kedro Hooks integration with Great Expectations
@@ -183,7 +268,7 @@ For more details on Kedro Hooks, check out the [documentation](https://kedro.rea
 ### Great Expectations
 Provides the ability to automatically profile and validate the data, as well as to generate documentation based on the expectations.
 In this tutorial we will generate a JSON file with the expectations.
-To learn more about Great Expectations, have a look at the [documentation page](https://docs.greatexpectations.io/en/latest/intro.html).  
+To learn more about Great Expectations, have a look at the [documentation page](https://docs.greatexpectations.io/en/stable/intro.html).  
  
 > [NOTE: Explain why one would use them together]
  
@@ -202,7 +287,7 @@ Enter the path for the folder where your data is stored. In this project, we wil
 Following, the prompt will ask for a Datasource short name. Enter your name of choice (I chose `pandas_penguins`) and `y` to confirm.  
 Next prompt will ask about profiling, type `y`. Since the csv file is in our Datasource, typing `1` will return the list of files available. Type `1` to choose the file.  
 The Expectations suite will create a folder path and save the expectations as a JSON file. The file will describe all the expectations which will be asserted on this dataset.  
->[NOTE: Add .gif with the process]
+> [NOTE: Add .gif with the process]
 
 Typying `y` on the next prompt will open the GE documentation with the data profiling analysis on a browser page.  
 The 'Walkthrough' window shown is great to get you more familiar with the suite setup.
@@ -311,7 +396,7 @@ In order to use notebooks in your Kedro project, you need to install Jupyter:
 ```
 pip install jupyter
 ```
-> NOTE: only needed if not using `conda`.
+> NOTE: only necessary if not using `conda`.
 
 For using Jupyter Lab, you need to install it:
 

@@ -8,6 +8,8 @@ class Base64DataSet(AbstractDataSet):
         self._filepath = filepath
 
     def _save(self, binary_data):
+        """Takes the incoming binary data and encodes to base64
+        """
         with open(str(self._filepath), 'w') as f:
             f.write(b64encode(binary_data).decode('utf8'))
 
