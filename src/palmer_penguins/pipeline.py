@@ -31,7 +31,7 @@
 
 from typing import Dict
 
-from kedro.pipeline import Pipeline
+from kedro.pipeline import Pipeline, node
 
 from palmer_penguins.pipelines import data_engineering as de
 from palmer_penguins.pipelines import data_science as ds
@@ -51,7 +51,14 @@ def create_pipelines(**kwargs) -> Dict[str, Pipeline]:
     data_science_pipeline = ds.create_pipeline()
 
     return {
+        "__ge_pipeline__": Pipeline([
+            node(lambda x: x.show(), inputs='spark_penguins_data', outputs=None),
+            node(lambda x: x.describe(), inputs='pandas_penguins_data', outputs=None),
+        ]),
         "de": data_engineering_pipeline,
         "ds": data_science_pipeline,
         "__default__": data_engineering_pipeline + data_science_pipeline,
+
     }
+
+

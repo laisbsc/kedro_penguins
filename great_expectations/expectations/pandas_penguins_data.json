@@ -1,0 +1,325 @@
+{
+  "data_asset_type": "Dataset",
+  "expectation_suite_name": "pandas_penguins_data",
+  "expectations": [
+    {
+      "expectation_type": "expect_table_row_count_to_be_between",
+      "kwargs": {
+        "max_value": 378,
+        "min_value": 309
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_table_column_count_to_equal",
+      "kwargs": {
+        "value": 17
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_table_columns_to_match_ordered_list",
+      "kwargs": {
+        "column_list": [
+          "studyName",
+          "Sample Number",
+          "Species",
+          "Region",
+          "Island",
+          "Stage",
+          "Individual ID",
+          "Clutch Completion",
+          "Date Egg",
+          "Culmen Length (mm)",
+          "Culmen Depth (mm)",
+          "Flipper Length (mm)",
+          "Body Mass (g)",
+          "Sex",
+          "Delta 15 N (o/oo)",
+          "Delta 13 C (o/oo)",
+          "Comments"
+        ]
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "studyName"
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_distinct_values_to_be_in_set",
+      "kwargs": {
+        "column": "studyName",
+        "value_set": [
+          "PAL0708",
+          "PAL0809",
+          "PAL0910"
+        ]
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_kl_divergence_to_be_less_than",
+      "kwargs": {
+        "column": "studyName",
+        "partition_object": {
+          "values": [
+            "PAL0708",
+            "PAL0809",
+            "PAL0910"
+          ],
+          "weights": [
+            0.31976744186046513,
+            0.3313953488372093,
+            0.3488372093023256
+          ]
+        },
+        "threshold": 0.6
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "Sample Number"
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_min_to_be_between",
+      "kwargs": {
+        "column": "Sample Number",
+        "max_value": 2,
+        "min_value": 0
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_max_to_be_between",
+      "kwargs": {
+        "column": "Sample Number",
+        "max_value": 153,
+        "min_value": 151
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_mean_to_be_between",
+      "kwargs": {
+        "column": "Sample Number",
+        "max_value": 64.15116279069767,
+        "min_value": 62.151162790697676
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_median_to_be_between",
+      "kwargs": {
+        "column": "Sample Number",
+        "max_value": 59.0,
+        "min_value": 57.0
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_quantile_values_to_be_between",
+      "kwargs": {
+        "allow_relative_error": false,
+        "column": "Sample Number",
+        "quantile_ranges": {
+          "quantiles": [
+            0.05,
+            0.25,
+            0.5,
+            0.75,
+            0.95
+          ],
+          "value_ranges": [
+            [
+              5,
+              7
+            ],
+            [
+              28,
+              30
+            ],
+            [
+              57,
+              59
+            ],
+            [
+              94,
+              96
+            ],
+            [
+              134,
+              136
+            ]
+          ]
+        }
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "Individual ID"
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_value_lengths_to_be_between",
+      "kwargs": {
+        "column": "Individual ID",
+        "min_value": 1
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    }
+  ],
+  "meta": {
+    "BasicSuiteBuilderProfiler": {
+      "batch_kwargs": {
+        "data_asset_name": "penguins_iter",
+        "datasource": "pandas_penguins",
+        "path": "/Users/lais_carvalho/Desktop/projects/kedroid/kedro_penguins/palmer_penguins/great_expectations/../data/01_raw/penguins_iter.csv"
+      },
+      "created_at": 1599551434.7465641,
+      "created_by": "BasicSuiteBuilderProfiler"
+    },
+    "citations": [
+      {
+        "batch_kwargs": {
+          "data_asset_name": "penguins_iter",
+          "datasource": "pandas_penguins",
+          "path": "/Users/lais_carvalho/Desktop/projects/kedroid/kedro_penguins/palmer_penguins/great_expectations/../data/01_raw/penguins_iter.csv"
+        },
+        "batch_markers": {
+          "ge_load_time": "20200908T075034.554826Z",
+          "pandas_data_fingerprint": "2056d43c40028ae648a26be34511216a"
+        },
+        "batch_parameters": null,
+        "citation_date": "20200908T075034.771312Z",
+        "comment": "BasicSuiteBuilderProfiler added a citation based on the current batch."
+      }
+    ],
+    "columns": {
+      "Body Mass (g)": {
+        "description": ""
+      },
+      "Clutch Completion": {
+        "description": ""
+      },
+      "Comments": {
+        "description": ""
+      },
+      "Culmen Depth (mm)": {
+        "description": ""
+      },
+      "Culmen Length (mm)": {
+        "description": ""
+      },
+      "Date Egg": {
+        "description": ""
+      },
+      "Delta 13 C (o/oo)": {
+        "description": ""
+      },
+      "Delta 15 N (o/oo)": {
+        "description": ""
+      },
+      "Flipper Length (mm)": {
+        "description": ""
+      },
+      "Individual ID": {
+        "description": ""
+      },
+      "Island": {
+        "description": ""
+      },
+      "Region": {
+        "description": ""
+      },
+      "Sample Number": {
+        "description": ""
+      },
+      "Sex": {
+        "description": ""
+      },
+      "Species": {
+        "description": ""
+      },
+      "Stage": {
+        "description": ""
+      },
+      "studyName": {
+        "description": ""
+      }
+    },
+    "great_expectations_version": "0.12.1",
+    "notes": {
+      "content": [
+        "#### This is an _example_ suite\n\n- This suite was made by quickly glancing at 1000 rows of your data.\n- This is **not a production suite**. It is meant to show examples of expectations.\n- Because this suite was auto-generated using a very basic profiler that does not know your data like you do, many of the expectations may not be meaningful.\n"
+      ],
+      "format": "markdown"
+    }
+  }
+}
