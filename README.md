@@ -51,33 +51,11 @@ The culmen is "the upper ridge of a bird's beak" (definition from Oxford Languag
 For this penguin data, the `culmen length` and `culmen depth` are measured as shown below (thanks Kristen Gorman for clarifying!):
 ![Penguin parts](https://github.com/allisonhorst/palmerpenguins/blob/master/man/figures/culmen_depth.png)  
 
-<<<<<<< HEAD
-## Overview
-
-This Kedro project was generated using `Kedro 0.16.3` by running:
-
-```
-kedro new
-```
-
-This repository uses the `size_penguins.csv` dataset, hosted remotely.  The aim of this repo is to show the user how to:
- - Load 'remote' data, in this case, a `.csv` file hosted in a AWS S3 bucket. [check!]
- - Plot a scatter graph with the data with `kedro run`. [write the docs]
- - Encode and decode the generated image ('scatter_plot.png') in a node using Transcode [write the docs]
- - Use Kedro Hooks to expand the project with plugins, in this case the Great Expectations plugin. [code and docs]
-
-## Rules and guidelines for best practice
-=======
-
-
-## Kedro template - rules and guidelines
-=======
->>>>>>> tutorial_docs
-
 ## The Project - Advanced Kedro tutorial
 This tutorial is destined for those who have Intermediate level of Python and have mastered the basics of Kedro. In case you are looking for a simpler `kedro-example`, try the [Spaceflights tutorial](https://kedro.readthedocs.io/en/latest/03_tutorial/01_spaceflights_tutorial.html).
 
 ### Aim
+
 This repository uses the `size_penguins.csv` dataset, hosted on AWS cloud env and the `iter_penguins.csv`, hosted locally.
 The aim of this example is to show users how to:
  - Load 'remote' data, in this case, a `.csv` file hosted in a AWS S3 bucket.
@@ -87,6 +65,7 @@ The aim of this example is to show users how to:
    > Note: this part of the project will use PySpark, which requires Java to be installed. To install Java (macOS) type `brew cask install java` on your terminal. [did not work for me - troubleshoot?]
 
 ### Table of contents
+
 1. [Rules and guidelines for Kedro template](#rules-and-guidelines-for-best-practice)
 2. Tutorial
     * [Creating a new project](#Creating-a-new-project)
@@ -99,6 +78,7 @@ The aim of this example is to show users how to:
     
 
 ## Rules and guidelines for best practices
+
 To get the best out of this template:
  * Please don't remove any lines from the `.gitignore` file we provide
  * Make sure your results can be reproduced by following a data engineering convention, e.g. the one we suggest [here](https://kedro.readthedocs.io/en/stable/06_resources/01_faq.html#what-is-data-engineering-convention)
@@ -403,7 +383,7 @@ The final `y` will open a notebook with the expectations for the data.
 
 
 
-____________ From here onwards needs some tidying ______________
+____________ Stopped writing the docs here - still needs some tidying ______________
 
 ### Running Kedro
 
@@ -479,28 +459,8 @@ kedro test
 
 To configure the coverage threshold, please have a look at the file `.coveragerc`.
 
-<<<<<<< HEAD
-## Kedro Hooks - integration with Great Expectations
-In this example, we will integrate the Great Expectations plugin to Kedro using Kedro Hooks.
 
-### Kedro Hooks
-Allows the user to 'hook' several functionalities to their Kedro project in an easy and consistent manner.
-For more details on Kedro Hooks, check out the [documentation](https://kedro.readthedocs.io/en/stable/07_extend_kedro/04_hooks.html).
-
-### Great Expectations
-Has the ability to automatically profile and validate the data, as well as to generate documentation based on the expectations.
-To learn more about Great Expectations, have a look at the [documentation page](https://docs.greatexpectations.io/en/latest/intro.html).  
- 
-
-
-```
-pip install great_expectation
-```
-
-## Package the project
-=======
 ### Package the project
->>>>>>> tutorial_docs
 
 In order to package the project's Python code in `.egg` and / or a `.wheel` file, you can run:
 
