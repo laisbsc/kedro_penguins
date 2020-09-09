@@ -1,14 +1,7 @@
 # Kedro Palmer Penguins example
 
 ## Overview
-
-This is your new Kedro project, which was generated using `Kedro 0.16.3` by running:
-
-```
-kedro new
-```
-
-Take a look at the [documentation](https://kedro.readthedocs.io) to get started.  More info below.
+This tutorial was assembled for those who have Intermediate level of Python and have mastered the basics of Kedro and wish to learn more. In case you are looking for a simpler `kedro-example`, try the [Spaceflights tutorial](https://kedro.readthedocs.io/en/latest/03_tutorial/01_spaceflights_tutorial.html).
 
 ## About the Dataset
 
@@ -52,7 +45,6 @@ For this penguin data, the `culmen length` and `culmen depth` are measured as sh
 ![Penguin parts](https://github.com/allisonhorst/palmerpenguins/blob/master/man/figures/culmen_depth.png)  
 
 ## The Project - Advanced Kedro tutorial
-This tutorial is destined for those who have Intermediate level of Python and have mastered the basics of Kedro. In case you are looking for a simpler `kedro-example`, try the [Spaceflights tutorial](https://kedro.readthedocs.io/en/latest/03_tutorial/01_spaceflights_tutorial.html).
 
 ### Aim
 
@@ -62,7 +54,8 @@ The aim of this example is to show users how to:
  - Generate a scatter plot with the data in the catalog with `kedro run`.
  - Convert the plot ('scatter_plot.png') in a node using Transcode.
  - Use Kedro Hooks to expand the project with the Great Expectations plugin.  
-   > Note: this part of the project will use PySpark, which requires Java to be installed. To install Java (macOS) type `brew cask install java` on your terminal. [did not work for me - troubleshoot?]
+   > Note: the last part of the project will use PySpark, which requires Java to be installed. To install Java (macOS) type `brew cask install java` on your terminal.  
+                                                                                  >[It did not work for me - troubleshoot?]
 
 ### Table of contents
 
@@ -97,7 +90,7 @@ For more details on how to create your Kedro project, visit [this page](https://
 
 
 ## Installing dependencies
-Before we start, add the `Great Expectations` plugin to your project dependencies in `src/requirements.txt` for `pip` installation and `src/environment.yml` for `conda` installation.
+Before we start, add the `Great Expectations` library to your project dependencies in `src/requirements.txt` for `pip` installation and `src/environment.yml` for `conda` installation.
 ```
 great-expectations==0.12.1
 ```
@@ -380,7 +373,7 @@ On terminal type:
 great_expectations suite new
 ```
 Followed by `2` for Spark data and `1` and select the file on disc, option `1`. Name the new Expectation suite, here `spark_iris_data`.  
-The final `y` will open a notebook with the expectations for the data.
+The final `y` will open a notebook with the expectations for the data.  
 
 
 
@@ -390,15 +383,10 @@ The final `y` will open a notebook with the expectations for the data.
 
 
 
-____________ Stopped writing the docs here - still needs some tidying ______________
 
-### Running Kedro
+_________ Stopped writing the docs here - still needs some tidying __________
 
-You can run your Kedro project with:
 
-```
-kedro run
-```
 If you are interested on knowing more about the integration between Kedro and Great Expectations, have a look at `kedro-great`,
 a [Python plugin](https://pypi.org/project/kedro-great/) desinged by [Tam-Sanh Nguyen](https://pypi.org/user/tamu/) to facilitate the integration between Kedro and GE.
 
@@ -408,7 +396,7 @@ _"Hold yourself accountable to Great Expectations. Never have fear of data silen
 This is the end of the tutorial.
 
 ## Add-ons
-This section contains the documentation add-ons that one might consider using. 
+This section contains the documentation add-ons that one might consider using on a Kedro project.
 
 ### Working with Kedro from notebooks
 
