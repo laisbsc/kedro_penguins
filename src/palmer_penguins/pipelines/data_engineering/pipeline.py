@@ -43,7 +43,7 @@ def create_pipeline(**kwargs):
             node(
                 make_scatter_plot,
                 inputs="size_penguins",
-                outputs='penguins_scatter_plot@matplotlib'
+                outputs='penguins_scatter_plot@matplotlib',
             ),
             node(
                 lambda x: x,  # identity function since this node just encodes (no function)

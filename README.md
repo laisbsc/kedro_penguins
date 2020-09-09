@@ -33,14 +33,15 @@ Please cite this data using: Gorman KB, Williams TD, Fraser WR (2014) Ecological
 
 > Artwork: @allison_horst
 
-What are culmen length & depth?
+*What are culmen length & depth?*
 The culmen is "the upper ridge of a bird's beak" (definition from Oxford Languages).
 
-For this penguin data, the culmen length and culmen depth are measured as shown below (thanks Kristen Gorman for clarifying!):
+For this penguin data, the `culmen length` and `culmen depth` are measured as shown below (thanks Kristen Gorman for clarifying!):
 ![Penguin parts](https://github.com/allisonhorst/palmerpenguins/blob/master/man/figures/culmen_depth.png)  
 
 
-## The Project
+## The Project - Advanced Kedro tutorial
+This tutorial is destined for those who have Intermediate level of Python and have mastered the basics of Kedro. In case you are looking for a simpler `kedro-example`, try the [Spaceflights tutorial](https://kedro.readthedocs.io/en/latest/03_tutorial/01_spaceflights_tutorial.html).
 
 ### Aim
 This repository uses the `size_penguins.csv` dataset, hosted on AWS cloud env and the `iter_penguins.csv`, hosted locally.
@@ -48,7 +49,7 @@ The aim of this example is to show users how to:
  - Load 'remote' data, in this case, a `.csv` file hosted in a AWS S3 bucket.
  - Plot a scatter graph with the data using `kedro run`. [write the docs]
  - Convert the generated image ('scatter_plot.png') in a node using Transcode [write the docs]
- - Use Kedro Hooks to expand the project with the Great Expectations plugin. [code and docs]
+ - Use Kedro Hooks to expand the project with the Great Expectations plugin. Note: this part of the project will use PySpark, which requires Java. To install Java (macOS) type `brew cask install java` on your terminal.[code]
 
 ### Table of contents
 1. [Rules and guidelines for Kedro template](#rules-and-guidelines-for-best-practice)
@@ -59,12 +60,10 @@ The aim of this example is to show users how to:
     * [Generate a scatter plot using a Kedro node](#Generate-a-scatter-plot-graph-using-a-node-function)
     * [Convert plots into binary and on base64  with transcode](#Convert-the-plots-into-binary-and-on-base64-by-using-transcode)
     * [Using Kedro Hooks to integrate Great Expectations plugin](#kedro-hooks---integration-with-great-expectations)
-3. [Add-ons](#Add-ons)
-    
+3. [Add-ons](#Add-ons)  
     
 
-
-## Rules and guidelines for best practice
+## Rules and guidelines for best practices
 To get the best out of this template:
  * Please don't remove any lines from the `.gitignore` file we provide
  * Make sure your results can be reproduced by following a data engineering convention, e.g. the one we suggest [here](https://kedro.readthedocs.io/en/stable/06_resources/01_faq.html#what-is-data-engineering-convention)
@@ -79,6 +78,8 @@ This Kedro project was generated using `Kedro 0.16.3` by running:
 ```
 kedro new
 ```
+For more details on how to create your Kedro project, visit [this page](https://kedro.readthedocs.io/en/stable/02_get_started/04_new_project.html).
+
 
 ## Installing dependencies
 Before we start, add the `Great Expectations` plugin to your project dependencies in `src/requirements.txt` for `pip` installation and `src/environment.yml` for `conda` installation.
@@ -123,12 +124,53 @@ Once in the IPython shell, check if the data is loads successfully by running:
 Once you see the data on the CLI output, all is working well.
 
 
- ## Generate a scatter plot graph using a node function
- [write the docs]
+## Generate a scatter plot graph using a node function
+The `notebooks` folder contains the initial data analysis exploration for the project. It generates a scatter plot relating the penguin's culmens dimensions and their species.
+![scatter_plot_img](notebooks/scatter_plot_species.png)  
+To open a notebook from the command line using Kedro datasets type `kedro jupyter notebook`. In case you would like to use a regular jupyter notebook with the data in your `catalog.yml` file, add the code snippet to your notebook:
+```
+from kedro.context import load_context
+
+context = load_context('../')   #loads the context and catalog from the kedro project
+catalog = context.catalog
+```
+The following steps will take the dataset, filter it according to the species column and create a scatter plot. Which will be saved in the project folder.
+In the `src/data_engineering/nodes.py` create a new node called `make_scatter_plot` which takes in a pandas dataframe and outputs a figure:
+```
+def make_scatter_plot(df: pd.DataFrame):
+    import matplotlib.pyplot as plt
+    fig, ax = plt.subplots()
+    for i, species in enumerate(list(df.species.unique())):
+        df[df['species'] == species].plot.scatter\
+            (x="culmen_length_mm", y="culmen_depth_mm", label=species, color=f"C{i}", ax=ax)
+        fig.set_size_inches(12, 12)
+        return fig
+```
+Note that the code inside the for loop is similar to the individual functions on the notebook.
+![image](docs/images/notebook_pic.png) 
+
+Kedro nodes are meant to be pure Python functions. Hence, the `savefig()` cell not being necessary. Instead, we will create a dataset to save the plots. To do so,
+inside `base/catalog.yml` create a new dataset:
+```
+penguins_scatter_plot:
+  type: kedro.extras.datasets.matplotlib.MatplotlibWriter
+  filepath: data/scatter_plot.png
+```
+Now, let's combine everything into a data pipeline.  
+In the `src/palmer_penguins/pipelines/data_engineering/pipeline.py` file add a node to the pipeline. Start by importing `make_scatter_plot` from `.nodes`. Next, add the node:
+```
+node(
+                make_scatter_plot,
+                inputs="size_penguins",
+                outputs='penguins_scatter_plot',
+            ),
+```
+When `kedro run` is executed, the project will run the `make_scatter_plot` function with the `size_penguins` dataset as input and output the `penguins_scatter_plot` as a `png` file. 
+
  
- ## Convert the plots into binary and on base64 by using transcode
- Explain the reason why you would like to do this.
- [write the docs]
+## Convert the plots into binary and on base64 by using transcode
+Explain the reason why you would like to do this.
+[write the docs]
 
 
 ## Kedro Hooks integration with Great Expectations
@@ -143,7 +185,7 @@ Provides the ability to automatically profile and validate the data, as well as 
 In this tutorial we will generate a JSON file with the expectations.
 To learn more about Great Expectations, have a look at the [documentation page](https://docs.greatexpectations.io/en/latest/intro.html).  
  
-> [Why use them together?]
+> [NOTE: Explain why one would use them together]
  
 #### Create GE folders template
 The following command will generate a new directory. The folder structure will be shown on the CLI upon execution.  
@@ -160,13 +202,79 @@ Enter the path for the folder where your data is stored. In this project, we wil
 Following, the prompt will ask for a Datasource short name. Enter your name of choice (I chose `pandas_penguins`) and `y` to confirm.  
 Next prompt will ask about profiling, type `y`. Since the csv file is in our Datasource, typing `1` will return the list of files available. Type `1` to choose the file.  
 The Expectations suite will create a folder path and save the expectations as a JSON file. The file will describe all the expectations which will be asserted on this dataset.  
-
+>[NOTE: Add .gif with the process]
 
 Typying `y` on the next prompt will open the GE documentation with the data profiling analysis on a browser page.  
 The 'Walkthrough' window shown is great to get you more familiar with the suite setup.
 
+### Link Kedro to Great Expectations  
 #### Creating a Custom dataset
-Under `src/<palmer_penguins>/hooks` create a python file. In this project, the file is named `great_expectations_hooks.py`. This file will hold the contents of a custom Dataset that will validate your data inputs and generate the Great Expectations validation.
+Under `src/<palmer_penguins>/hooks` create a python file. In this project, the file is named `great_expectations_hooks.py`. 
+This file will hold the contents of a custom Dataset that will replicate the way Great Expectations generate the validators and runs the checks on the data types of the dataset. In this case, the check will be performed on both `pandas` and `Spark` datasets.  
+The snippet of code below illustrates where the datatypes are described.  
+![snippet of code showing where the dataset types are specified](docs/images/hooks_pic.png)  
+For more information on how to write your own custom datasets, have a look at the [documentation](https://kedro.readthedocs.io/en/stable/07_extend_kedro/01_custom_datasets.html#).  
+
+#### Add pandas and Spark datasets to `catalog.yml`
+Add the `pandas` and `Spark` datasets to the catalog file from `data/01_raw`, as follows:  
+```
+pandas_penguins_data:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/penguins_iter.csv
+
+spark_penguins_data:
+  type: spark.SparkDataSet
+  filepath: data/01_raw/penguins_iter.csv
+  file_format: csv
+  load_args:
+    header: true 
+```
+
+#### Add nodes to `src/palmer_penguins/pipeline.py`  
+Now, let's add the nodes to `pipelines.py`. In the return
+```
+"__ge_pipeline__": Pipeline([
+            node(lambda x: x.show(), inputs='spark_penguins_data', outputs=None),
+            node(lambda x: x.describe(), inputs='pandas_penguins_data', outputs=None),
+        ]),
+```
+By the end, your `create_pipelines()` function will look like this:
+```
+def create_pipelines(**kwargs) -> Dict[str, Pipeline]:
+    data_engineering_pipeline = de.create_pipeline()
+    data_science_pipeline = ds.create_pipeline()
+
+    return {
+        "__ge_pipeline__": Pipeline([
+            node(lambda x: x.show(), inputs='spark_penguins_data', outputs=None),
+            node(lambda x: x.describe(), inputs='pandas_penguins_data', outputs=None),
+        ]),
+        "de": data_engineering_pipeline,
+        "ds": data_science_pipeline,
+        "__default__": data_engineering_pipeline + data_science_pipeline,
+
+    }
+```
+
+Now, let's run `great_expectations docs build` to check the output on the data validation.
+
+====== stopped the tutorial here due to Java install error ==========
+
+#### Create Datasource for PySpark dataset
+On terminal type:
+```bash
+great_expectations datasource new
+```  
+Followed by `1` for file, `2` for PySpark. Specify the path for the datafile, which here will be `data/01_raw`.
+And the datasource name `spark_data`. 
+
+#### Create a new suite
+On terminal type:
+```bash
+great_expectations suite new
+```
+Followed by `2` for Spark data and `1` and select the file on disc, option `1`. Name the new Expectation suite, here `spark_iris_data`.  
+The final `y` will open a notebook with the expectations for the data.
 
 
 
@@ -176,10 +284,7 @@ Under `src/<palmer_penguins>/hooks` create a python file. In this project, the f
 
 
 
-
-
-
-
+____________ From here onwards needs some tidying ______________
 
 ### Running Kedro
 
@@ -191,8 +296,7 @@ kedro run
 If you are interested on knowing more about the integration between Kedro and Great Expectations, have a look at `kedro-great`,
 a [Python plugin](https://pypi.org/project/kedro-great/) desinged by [Tam-Sanh Nguyen](https://pypi.org/user/tamu/) to facilitate the integration between Kedro and GE.
 
-"Hold yourself accountable to Great Expectations.
-Never have fear of data silently changing ever again."
+_"Hold yourself accountable to Great Expectations. Never have fear of data silently changing ever again."_
 
 
 This is the end of the tutorial.
