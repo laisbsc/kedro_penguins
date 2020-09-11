@@ -1,0 +1,358 @@
+{
+    "edges": [
+        {
+            "source": "05b8025b",
+            "target": "afbfbfb1"
+        },
+        {
+            "source": "2d51a4a3",
+            "target": "11411ef1"
+        },
+        {
+            "source": "f43e7789",
+            "target": "d5d6558e"
+        },
+        {
+            "source": "d5d6558e",
+            "target": "53c4b642"
+        },
+        {
+            "source": "1398fd85",
+            "target": "0c4c5b91"
+        },
+        {
+            "source": "0c4c5b91",
+            "target": "f43e7789"
+        },
+        {
+            "source": "1398fd85",
+            "target": "74c86d73"
+        },
+        {
+            "source": "d577578a",
+            "target": "74c86d73"
+        },
+        {
+            "source": "74c86d73",
+            "target": "3f82e2e9"
+        },
+        {
+            "source": "74c86d73",
+            "target": "40cc0777"
+        },
+        {
+            "source": "74c86d73",
+            "target": "57103b64"
+        },
+        {
+            "source": "74c86d73",
+            "target": "7a1cb4c1"
+        },
+        {
+            "source": "f7b62b1a",
+            "target": "76ddffce"
+        },
+        {
+            "source": "3f82e2e9",
+            "target": "76ddffce"
+        },
+        {
+            "source": "76ddffce",
+            "target": "61aea938"
+        },
+        {
+            "source": "61aea938",
+            "target": "23e0c9e9"
+        },
+        {
+            "source": "40cc0777",
+            "target": "23e0c9e9"
+        },
+        {
+            "source": "57103b64",
+            "target": "a158446c"
+        },
+        {
+            "source": "7a1cb4c1",
+            "target": "a158446c"
+        },
+        {
+            "source": "f1f1425b",
+            "target": "a158446c"
+        },
+        {
+            "source": "a158446c",
+            "target": "f7b62b1a"
+        }
+    ],
+    "layers": [],
+    "nodes": [
+        {
+            "full_name": "<lambda>",
+            "id": "afbfbfb1",
+            "name": "<Lambda>",
+            "pipelines": [
+                "ge_pipeline"
+            ],
+            "tags": [],
+            "type": "task"
+        },
+        {
+            "full_name": "<lambda>",
+            "id": "11411ef1",
+            "name": "<Lambda>",
+            "pipelines": [
+                "ge_pipeline"
+            ],
+            "tags": [],
+            "type": "task"
+        },
+        {
+            "full_name": "pandas_penguins_data",
+            "id": "05b8025b",
+            "layer": null,
+            "name": "Pandas Penguins Data",
+            "pipelines": [
+                "ge_pipeline"
+            ],
+            "tags": [],
+            "type": "data"
+        },
+        {
+            "full_name": "spark_penguins_data",
+            "id": "2d51a4a3",
+            "layer": null,
+            "name": "Spark Penguins Data",
+            "pipelines": [
+                "ge_pipeline"
+            ],
+            "tags": [],
+            "type": "data"
+        },
+        {
+            "full_name": "<lambda>",
+            "id": "d5d6558e",
+            "name": "<Lambda>",
+            "pipelines": [
+                "de",
+                "__default__"
+            ],
+            "tags": [],
+            "type": "task"
+        },
+        {
+            "full_name": "make_scatter_plot",
+            "id": "0c4c5b91",
+            "name": "Make Scatter Plot",
+            "pipelines": [
+                "de",
+                "__default__"
+            ],
+            "tags": [],
+            "type": "task"
+        },
+        {
+            "full_name": "split_data",
+            "id": "74c86d73",
+            "name": "Split Data",
+            "pipelines": [
+                "de",
+                "__default__"
+            ],
+            "tags": [],
+            "type": "task"
+        },
+        {
+            "full_name": "example_test_x",
+            "id": "3f82e2e9",
+            "layer": null,
+            "name": "Example Test X",
+            "pipelines": [
+                "de",
+                "ds",
+                "__default__"
+            ],
+            "tags": [],
+            "type": "data"
+        },
+        {
+            "full_name": "example_test_y",
+            "id": "40cc0777",
+            "layer": null,
+            "name": "Example Test Y",
+            "pipelines": [
+                "de",
+                "ds",
+                "__default__"
+            ],
+            "tags": [],
+            "type": "data"
+        },
+        {
+            "full_name": "example_train_x",
+            "id": "57103b64",
+            "layer": null,
+            "name": "Example Train X",
+            "pipelines": [
+                "de",
+                "ds",
+                "__default__"
+            ],
+            "tags": [],
+            "type": "data"
+        },
+        {
+            "full_name": "example_train_y",
+            "id": "7a1cb4c1",
+            "layer": null,
+            "name": "Example Train Y",
+            "pipelines": [
+                "de",
+                "ds",
+                "__default__"
+            ],
+            "tags": [],
+            "type": "data"
+        },
+        {
+            "full_name": "params:example_test_data_ratio",
+            "id": "d577578a",
+            "layer": null,
+            "name": "Params:example Test Data Ratio",
+            "pipelines": [
+                "de",
+                "__default__"
+            ],
+            "tags": [],
+            "type": "parameters"
+        },
+        {
+            "full_name": "penguins_scatter_plot",
+            "id": "f43e7789",
+            "layer": null,
+            "name": "Penguins Scatter Plot",
+            "pipelines": [
+                "de",
+                "__default__"
+            ],
+            "tags": [],
+            "type": "data"
+        },
+        {
+            "full_name": "penguins_scatter_plot_base64",
+            "id": "53c4b642",
+            "layer": null,
+            "name": "Penguins Scatter Plot Base64",
+            "pipelines": [
+                "de",
+                "__default__"
+            ],
+            "tags": [],
+            "type": "data"
+        },
+        {
+            "full_name": "size_penguins",
+            "id": "1398fd85",
+            "layer": null,
+            "name": "Size Penguins",
+            "pipelines": [
+                "de",
+                "__default__"
+            ],
+            "tags": [],
+            "type": "data"
+        },
+        {
+            "full_name": "predict",
+            "id": "76ddffce",
+            "name": "Predict",
+            "pipelines": [
+                "ds",
+                "__default__"
+            ],
+            "tags": [],
+            "type": "task"
+        },
+        {
+            "full_name": "report_accuracy",
+            "id": "23e0c9e9",
+            "name": "Report Accuracy",
+            "pipelines": [
+                "ds",
+                "__default__"
+            ],
+            "tags": [],
+            "type": "task"
+        },
+        {
+            "full_name": "train_model",
+            "id": "a158446c",
+            "name": "Train Model",
+            "pipelines": [
+                "ds",
+                "__default__"
+            ],
+            "tags": [],
+            "type": "task"
+        },
+        {
+            "full_name": "example_model",
+            "id": "f7b62b1a",
+            "layer": null,
+            "name": "Example Model",
+            "pipelines": [
+                "ds",
+                "__default__"
+            ],
+            "tags": [],
+            "type": "data"
+        },
+        {
+            "full_name": "example_predictions",
+            "id": "61aea938",
+            "layer": null,
+            "name": "Example Predictions",
+            "pipelines": [
+                "ds",
+                "__default__"
+            ],
+            "tags": [],
+            "type": "data"
+        },
+        {
+            "full_name": "parameters",
+            "id": "f1f1425b",
+            "layer": null,
+            "name": "Parameters",
+            "pipelines": [
+                "ds",
+                "__default__"
+            ],
+            "tags": [],
+            "type": "parameters"
+        }
+    ],
+    "pipelines": [
+        {
+            "id": "ge_pipeline",
+            "name": "Ge Pipeline"
+        },
+        {
+            "id": "de",
+            "name": "De"
+        },
+        {
+            "id": "ds",
+            "name": "Ds"
+        },
+        {
+            "id": "__default__",
+            "name": "Default"
+        }
+    ],
+    "selected_pipeline": {
+        "id": "__default__",
+        "name": "Default"
+    },
+    "tags": []
+}

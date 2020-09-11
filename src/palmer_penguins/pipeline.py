@@ -51,7 +51,7 @@ def create_pipelines(**kwargs) -> Dict[str, Pipeline]:
     data_science_pipeline = ds.create_pipeline()
 
     return {
-        "__ge_pipeline__": Pipeline([
+        "ge_pipeline": Pipeline([
             node(lambda x: x.show(), inputs='spark_penguins_data', outputs=None),
             node(lambda x: x.describe(), inputs='pandas_penguins_data', outputs=None),
         ]),

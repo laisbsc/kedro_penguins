@@ -7,11 +7,10 @@ This tutorial was assembled for those who have Intermediate level of Python and 
 
 The Palmer Archipelago (Antarctica) Penguins dataset was made available by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) and the [Palmer Station Antartica LTER](https://pal.lternet.edu/), a member of the [Long Term Ecological Research Network (LTRN)](https://lternet.edu).
 
-The palmerpenguins package contains two pandas datasets, `size_penguins.csv` and `penguins_iter.csv`.
-The first is locally hosted under `data/01_raw` and the later on the AWS Cloud, on a S3 bucket.
+The `palmerpenguins` package contains two pandas datasets, `size_penguins.csv` and `penguins_iter.csv`.
+The former is hosted on an AWS Cloud, on a S3 bucket. The latter is locally hosted under `data/01_raw`.
 
 ## The datasets
-
 ### Variables:
 `size_penguins.csv`
 - species: penguin species (Chinstrap, Adélie, or Gentoo)
@@ -357,7 +356,6 @@ def create_pipelines(**kwargs) -> Dict[str, Pipeline]:
 
 Now, let's run `great_expectations docs build` to check the output on the data validation.
 
-====== stopped the tutorial here due to Java install error ==========
 
 #### Create Datasource for PySpark dataset
 On terminal type:
@@ -372,8 +370,9 @@ On terminal type:
 ```bash
 great_expectations suite new
 ```
-Followed by `2` for Spark data and `1` and select the file on disc, option `1`. Name the new Expectation suite, here `spark_iris_data`.  
+Followed by `2` for Spark data and `1` and select the file on disc, option `1`. Name the new Expectation suite, here `spark_penguins_data`.  
 The final `y` will open a notebook with the expectations for the data.  
+This will create a new expectation. You can edit that expectation on a Jupyter notebook. Moreover, you can always access that notebook by typing `great_expectations suite edit`
 
 
 
@@ -384,6 +383,7 @@ The final `y` will open a notebook with the expectations for the data.
 
 
 
+====== stopped the tutorial here due to Java install error ==========
 _________ Stopped writing the docs here - still needs some tidying __________
 
 

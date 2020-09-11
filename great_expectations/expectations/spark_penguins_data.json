@@ -1,0 +1,21 @@
+{
+  "data_asset_type": null,
+  "expectation_suite_name": "spark_penguins_data",
+  "expectations": [],
+  "meta": {
+    "citations": [
+      {
+        "batch_kwargs": {
+          "data_asset_name": "penguins_iter",
+          "datasource": "spark_data_2",
+          "path": "/Users/lais_carvalho/Desktop/projects/kedroid/kedro_penguins/palmer_penguins/great_expectations/../data/01_raw/penguins_iter.csv"
+        },
+        "batch_markers": null,
+        "batch_parameters": null,
+        "citation_date": "20200910T152442.470360Z",
+        "comment": "New suite added via CLI"
+      }
+    ],
+    "great_expectations_version": "0.12.1"
+  }
+}

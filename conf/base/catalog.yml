@@ -6,13 +6,18 @@
 
 #S3 size_penguins_dataset
 size_penguins:
-  type: pandas.CSVDataSet
-  filepath: s3://penguins-dataset-iter/penguins_size.csv
-#  versioned: True
-  credentials: dev_s3
-  load_args:
-    sep: ','
-    na_values: ['#NA', NA]
+#  client_args:
+    type: pandas.CSVDataSet
+    filepath: s3://penguins-dataset-iter/penguins_size.csv
+    #  versioned: True
+    credentials: dev_s3
+    load_args:
+      sep: ','
+      na_values: ['#NA', NA]
+
+#  type: pandas.CSVDataSet
+#  filepath: data/01_raw
+
 
 penguins_scatter_plot@matplotlib:
   type: kedro.extras.datasets.matplotlib.MatplotlibWriter
