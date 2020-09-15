@@ -67,8 +67,8 @@ def split_data(data: pd.DataFrame, example_test_data_ratio: float) -> Dict[str, 
     # One-hot encoding for the target variable
     data = pd.get_dummies(data, columns=["target"], prefix="", prefix_sep="")
 
-    # Shuffle all the data
-    data = data.sample(frac=1).reset_index(drop=True)
+    # Shuffle all the data > if uncommented, accuracy becomes random
+    # data = data.sample(frac=1).reset_index(drop=True)
 
     # Split to training and testing data
     n = data.shape[0]
@@ -82,10 +82,16 @@ def split_data(data: pd.DataFrame, example_test_data_ratio: float) -> Dict[str, 
     test_data_x = test_data.loc[:, "culmen_length_mm":"culmen_depth_mm"]
     test_data_y = test_data[classes]
 
+    print(train_data_x)
+    print(train_data_y)
+    print(test_data_x)
+    print(test_data_y)
+
     # When returning many variables, it is a good practice to give them names:
     return dict(
         train_x=train_data_x,
         train_y=train_data_y,
         test_x=test_data_x,
         test_y=test_data_y,
+
     )
