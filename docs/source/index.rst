@@ -6,7 +6,17 @@ Welcome to project's palmer_penguins API docs!
 =============================================
 
 .. toctree::
+   :maxdepth: 2
+   :caption: Penguins!
+
+   01_intro
+   02_section_2
+   03_section_3
+   04_section_4
+   
+.. toctree::
    :maxdepth: 4
+   :caption: Modules
 
    modules
 
