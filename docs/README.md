@@ -1,17 +1,22 @@
 # Kedro Palmer Penguins example
 
+> NOTE: Dear reader, this is a beta repo. I.e., if you think there is anything which could be better explained, please create an issue and let me know.
+> I'm always happy to take on suggestions. Same goes if this tutorial helped you in any way. :) 
+
 ## Overview
-This tutorial was assembled for those who have Intermediate level of Python and have mastered the basics of Kedro and 
-wish to learn more. In case you are looking for a simpler `kedro-example`, try the 
-[Spaceflights tutorial](https://kedro.readthedocs.io/en/latest/03_tutorial/01_spaceflights_tutorial.html).
+This repo was assembled for those who have have tried the [Spaceflights tutorial](https://kedro.readthedocs.io/en/latest/03_tutorial/01_spaceflights_tutorial.html) 
+and want to continue practicing using Kedro.  
 
-here, I will assume that you create an empty project and follow the flow of the tutorial by copying and pasting the example code 
-into the project as described. This tutorial will take approximately **2 hours** and you will learn each step of the 
-Kedro project development workflow. By working on this example, you will learn how to set up transformers and how to
-expand your project capabilities by using Hooks with Great Expectations for the Penguins dataset.
+If you create an empty project using `kedro new` and follow the text by copying and pasting the example code as described,
+it will take you approximately **2 hours** and you will end up with a repository as the one in here.  Alternatively, you can clone this repo using 
+```python
+git clone https://github.com/laisbsc/kedro_penguins.git
+```
+and tweak the project as you wish, for exploration/adaptation purposes.
+ 
+By working on this example, you will learn how to set up [transformers](https://kedro.readthedocs.io/en/stable/07_extend_kedro/02_transformers.html?highlight=transformers#dataset-transformers), 
+and how to expand your project capabilities by using [Hooks](https://kedro.readthedocs.io/en/stable/07_extend_kedro/04_hooks.html?highlight=hooks) with the [Great Expectations](https://greatexpectations.io) Python library for the [Penguins dataset](https://github.com/allisonhorst/palmerpenguins).
 
-However, you may prefer to get up and running more swiftly without the copy/pasting described. In that case, you can use 
-git clone this repository to explore.
 
 ## About the Dataset
 
@@ -53,7 +58,7 @@ The culmen is "the upper ridge of a bird's beak" (definition from Oxford Languag
 For this penguin data, the `culmen length` and `culmen depth` are measured as shown below (thanks Kristen Gorman for clarifying!):
 ![Penguin parts](https://github.com/allisonhorst/palmerpenguins/blob/master/man/figures/culmen_depth.png)  
 
-## The Project - Advanced Kedro tutorial
+## The Project - Intermediate Kedro tutorial
 
 ### Aim
 
