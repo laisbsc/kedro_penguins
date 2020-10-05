@@ -86,7 +86,7 @@ The aim of this example is to show users how to:
    > Note: the last part of the project will use PySpark, which requires Java to be installed. To install Java (macOS) type `brew cask install java` on your terminal.  
                                                                                   >[It did not work for me - troubleshoot?]
 
-## Rules and guidelines for best practices
+## Rules and guidelines for best practice
 
 To get the best out of this template:
  * Please don't remove any lines from the `.gitignore` file we provide

@@ -1,6 +1,5 @@
-# Kedro Palmer Penguins example
-
 ## Load data to `catalog.yml` from AWS S3 bucket (using `credentials` and `load args`)
+
 1. If using PyCharm or VSCode, drag the `credentials.yml` file from `./base` and drop it into `./local`. This file will hold the S3 credentials to access your account. DO NOT SHARE YOUR CREDENTIALS.  
 All files in the `./local` folder will be ignored by git, which by default will protect your credentials from being public.
 Add the credentials following the steps on 'Example 4' on the [this documentation page](https://kedro.readthedocs.io/en/stable/05_data/01_data_catalog.html).  

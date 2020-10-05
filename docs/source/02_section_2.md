@@ -1,5 +1,3 @@
-# Kedro Palmer Penguins example
-
 ## Creating a new project
 
 This Kedro project was generated using `Kedro 0.16.3` by running:

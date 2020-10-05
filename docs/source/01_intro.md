@@ -8,7 +8,7 @@ This repo was assembled for those who have have tried the [Spaceflights tutorial
 and want to continue practicing using Kedro.  
 
 If you create an empty project using `kedro new` and follow the text by copying and pasting the example code as described,
-it will take you approximately **2 hours** and you will end up with a repository as the one in here.  Alternatively, you can clone this repo using 
+it will take you approximately **2 hours** and you will end up with a repository as the one in [here](https://github.com/laisbsc/kedro_penguins).  Alternatively, you can clone this repo using 
 ```python
 git clone https://github.com/laisbsc/kedro_penguins.git
 ```
