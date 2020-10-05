@@ -3,6 +3,14 @@
 > NOTE: Dear reader, this is a beta repo. I.e., if you think there is anything which could be better explained, please create an issue and let me know.
 > I'm always happy to take on suggestions. Same goes if this tutorial helped you in any way. :) 
 
+    
+## The Project - Advanced Kedro tutorial
+
+![image of the Penguins](https://github.com/allisonhorst/palmerpenguins/blob/master/man/figures/lter_penguins.png)
+
+> Artwork: @allison_horst
+
+
 ## Overview
 This repo was assembled for those who have have tried the [Spaceflights tutorial](https://kedro.readthedocs.io/en/latest/03_tutorial/01_spaceflights_tutorial.html) 
 and want to continue practicing using Kedro.  
@@ -14,9 +22,20 @@ git clone https://github.com/laisbsc/kedro_penguins.git
 ```
 and tweak the project as you wish, for exploration/adaptation purposes.
  
-By working on this example, you will learn how to set up [transformers](https://kedro.readthedocs.io/en/stable/07_extend_kedro/02_transformers.html?highlight=transformers#dataset-transformers), 
+By working on this example, you will learn how to use [transformers](https://kedro.readthedocs.io/en/stable/07_extend_kedro/02_transformers.html?highlight=transformers#dataset-transformers), 
 and how to expand your project capabilities by using [Hooks](https://kedro.readthedocs.io/en/stable/07_extend_kedro/04_hooks.html?highlight=hooks) with the [Great Expectations](https://greatexpectations.io) Python library for the [Penguins dataset](https://github.com/allisonhorst/palmerpenguins).
 
+### Aim
+
+This repository uses the `size_penguins.csv` dataset, hosted on AWS cloud env and the `iter_penguins.csv`, hosted locally.
+The aim of this example is to show users how to:
+ - Load 'remote' data, in this case, a `.csv` file hosted in a AWS S3 bucket.
+ - Generate a scatter plot with the data in the catalog with `kedro run`.
+ - Convert the plot ('scatter_plot.png') in a node using Transcode.
+ - Use Kedro Hooks to expand the project with the Great Expectations plugin.  
+   > Note: the last part of the project will use PySpark, which is compatible with Python 3.7 and requires Java to be installed.  
+                                                                                  >To install Java (in macOS) type `brew cask install java` on your terminal.  
+                                                                                  >[It did not work for me - troubleshoot?]
 
 ### Table of contents
 
@@ -32,24 +51,6 @@ and how to expand your project capabilities by using [Hooks](https://kedro.readt
     * [Using Kedro Hooks to integrate Great Expectations plugin](#kedro-hooks---integration-with-great-expectations)
 3. [Add-ons](#Add-ons)  
     
-    
-## The Project - Advanced Kedro tutorial
-
-![image of the Penguins](https://github.com/allisonhorst/palmerpenguins/blob/master/man/figures/lter_penguins.png)
-
-> Artwork: @allison_horst
-
-
-### Aim
-
-This repository uses the `size_penguins.csv` dataset, hosted on AWS cloud env and the `iter_penguins.csv`, hosted locally.
-The aim of this example is to show users how to:
- - Load 'remote' data, in this case, a `.csv` file hosted in a AWS S3 bucket.
- - Generate a scatter plot with the data in the catalog with `kedro run`.
- - Convert the plot ('scatter_plot.png') in a node using Transcode.
- - Use Kedro Hooks to expand the project with the Great Expectations plugin.  
-   > Note: the last part of the project will use PySpark, which requires Java to be installed. To install Java (macOS) type `brew cask install java` on your terminal.  
-                                                                                  >[It did not work for me - troubleshoot?]
 
 ## Rules and guidelines for best practice
 
