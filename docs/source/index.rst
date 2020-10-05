@@ -7,7 +7,7 @@ Welcome to project's palmer_penguins API docs!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Palmer Penguins Kedro tutorial
+   :caption: Advanced Kedro tutorial
 
    01_intro
    02_section_2
