@@ -11,6 +11,21 @@ expand your project capabilities by using Hooks with Great Expectations for the 
 However, you may prefer to get up and running more swiftly without the copy/pasting described. In that case, you can use 
 git clone this repository to explore.
 
+### Table of contents
+
+> NOTE: edit the links when the docs are structured.
+
+1. [Rules and guidelines for Kedro template](#rules-and-guidelines-for-best-practice)
+2. Tutorial
+    * [Creating a new project](#Creating-a-new-project)
+    * [Installing dependencies](#Installing-dependencies)
+    * [Loading data to `catalog.yml` from AWS S3 bucket](#load-data-to-catalogyml-from-aws-s3-bucket-using-credentials-and-load-args)
+    * [Generate a scatter plot using a Kedro node](#Generate-a-scatter-plot-graph-using-a-node-function)
+    * [Convert plots into binary and on base64  with transcode](#Convert-the-plots-into-binary-and-on-base64-by-using-transcode)
+    * [Using Kedro Hooks to integrate Great Expectations plugin](#kedro-hooks---integration-with-great-expectations)
+3. [Add-ons](#Add-ons)  
+    
+
 ## About the Dataset
 
 The Palmer Archipelago (Antarctica) Penguins dataset was made available by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) and the [Palmer Station Antartica LTER](https://pal.lternet.edu/), a member of the [Long Term Ecological Research Network (LTRN)](https://lternet.edu).
@@ -63,21 +78,6 @@ The aim of this example is to show users how to:
  - Use Kedro Hooks to expand the project with the Great Expectations plugin.  
    > Note: the last part of the project will use PySpark, which requires Java to be installed. To install Java (macOS) type `brew cask install java` on your terminal.  
                                                                                   >[It did not work for me - troubleshoot?]
-
-### Table of contents
-
-> NOTE: edit the links when the docs are structured.
-
-1. [Rules and guidelines for Kedro template](#rules-and-guidelines-for-best-practice)
-2. Tutorial
-    * [Creating a new project](#Creating-a-new-project)
-    * [Installing dependencies](#Installing-dependencies)
-    * [Loading data to `catalog.yml` from AWS S3 bucket](#load-data-to-catalogyml-from-aws-s3-bucket-using-credentials-and-load-args)
-    * [Generate a scatter plot using a Kedro node](#Generate-a-scatter-plot-graph-using-a-node-function)
-    * [Convert plots into binary and on base64  with transcode](#Convert-the-plots-into-binary-and-on-base64-by-using-transcode)
-    * [Using Kedro Hooks to integrate Great Expectations plugin](#kedro-hooks---integration-with-great-expectations)
-3. [Add-ons](#Add-ons)  
-    
 
 ## Rules and guidelines for best practices
 
