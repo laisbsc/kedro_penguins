@@ -57,6 +57,5 @@ The aim of this example is to show users how to:
 To get the best out of this template:
  * Please don't remove any lines from the `.gitignore` file we provide
  * Make sure your results can be reproduced by following a data engineering convention, e.g. the one we suggest [here](https://kedro.readthedocs.io/en/stable/06_resources/01_faq.html#what-is-data-engineering-convention)
- * Don't commit any data to your repository
  * Don't commit any credentials or local configuration to your repository
  * Keep all credentials or local configuration in `conf/local/`
