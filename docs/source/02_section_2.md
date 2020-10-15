@@ -55,7 +55,8 @@ Before we start, add the `Great Expectations` library to your project dependenci
 great-expectations==0.12.1
 ```
 
-To install the dependencies, run:
+To install the dependencies, run:  
+
 ```
 kedro install
 ```
