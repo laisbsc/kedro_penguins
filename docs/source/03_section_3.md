@@ -61,7 +61,7 @@ def make_scatter_plot(df: pd.DataFrame):
 ```  
 
 Now, compare the code snippet in the funtion with the one on the notebook (below). Note the similarity between the code inside the for loop above and the individual functions.
-![image](./docs/images/notebook_pic.png)
+![image](../images/notebook_pic.png)
 
 Kedro nodes are meant to be pure Python functions. Hence, the `savefig()` cell not being necessary. Instead, we will create a dataset to save the plots. To do so,
 inside `base/catalog.yml` create a new dataset:
