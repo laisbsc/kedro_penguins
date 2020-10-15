@@ -26,7 +26,7 @@ size_penguins:
 ```
  
 3. Test your data using IPython. On terminal type:
-``` commandline
+``` bash
     kedro ipython
 ```
 Once in the IPython shell, check if the data is loads successfully by running:
