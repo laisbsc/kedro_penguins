@@ -3,7 +3,7 @@
    contain the root `toctree` directive.
 
 Welcome to project's palmer_penguins API docs!
-=============================================
+================================================
 
 .. toctree::
    :maxdepth: 2
@@ -24,7 +24,7 @@ Welcome to project's palmer_penguins API docs!
 
 
 Indices and tables
-==================
+===================
 
 * :ref:`genindex`
 * :ref:`modindex`

@@ -40,7 +40,7 @@ The 'Walkthrough' window shown is great to get you more familiar with the suite 
 Under `src/<palmer_penguins>/hooks` create a python file. In this project, the file is named `great_expectations_hooks.py`. 
 This file will hold the contents of a custom Dataset that will replicate the way Great Expectations generate the validators and runs the checks on the data types of the dataset. In this case, the check will be performed on both `pandas` and `Spark` datasets.  
 The snippet of code below illustrates where the datatypes are described.  
-![snippet of code showing where the dataset types are specified](docs/images/hooks_pic.png)  
+![snippet of code showing where the dataset types are specified](../images/hooks_pic.png)  
 For more information on how to write your own custom datasets, have a look at the [documentation](https://kedro.readthedocs.io/en/stable/07_extend_kedro/01_custom_datasets.html#).  
 
 #### Add pandas and Spark datasets to `catalog.yml`
