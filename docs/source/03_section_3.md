@@ -37,7 +37,7 @@ Once you see the data on the CLI output, all is working well.
 
 ## Generate a scatter plot graph using a node function
 The `notebooks` folder contains the initial data analysis exploration for the project. It generates a scatter plot relating the penguin's culmens dimensions and their species.
-![scatter_plot_img](./docs/images/scatter_plot_species.png)  
+![scatter_plot_img](../images/scatter_plot_species.png)  
 To open a notebook from the command line using Kedro datasets type `kedro jupyter notebook`. In case you would like to use a regular jupyter notebook with the data in your `catalog.yml` file, add the code snippet to your notebook:  
 
 ```
