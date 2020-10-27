@@ -2,7 +2,7 @@ aiobotocore==0.10.2
 aiohttp==3.6.2
 anyconfig==0.9.11
 appnope==0.1.0
-arrow @ file:///Users/runner/miniforge3/conda-bld/arrow_1598229322501/work
+arrow
 async-generator==1.10
 async-timeout==3.0.1
 attrs @ file:///tmp/build/80754af9/attrs_1598374659300/work
