@@ -149,7 +149,7 @@ html_show_sourcelink = False
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = "palmer_penguinsdoc"
+htmlhelp_basename = "kedro_penguinsdoc"
 
 # -- Options for LaTeX output ------------------------------------------------
 
@@ -177,8 +177,8 @@ latex_elements = {
 latex_documents = [
     (
         master_doc,
-        "palmer_penguins.tex",
-        "palmer_penguins Documentation",
+        "kedro_penguins.tex",
+        "kedro_penguins Documentation",
         "QuantumBlack",
         "manual",
     )
@@ -191,8 +191,8 @@ latex_documents = [
 man_pages = [
     (
         master_doc,
-        "palmer_penguins",
-        "palmer_penguins Documentation",
+        "kedro_penguins",
+        "kedro_penguins Documentation",
         [author],
         1,
     )
@@ -206,11 +206,11 @@ man_pages = [
 texinfo_documents = [
     (
         master_doc,
-        "palmer_penguins",
-        "palmer_penguins Documentation",
+        "kedro_penguins",
+        "kedro_penguins Documentation",
         author,
-        "palmer_penguins",
-        "Project palmer_penguins codebase.",
+        "kedro_penguins",
+        "Project kedro_penguins codebase.",
         "Data-Science",
     )
 ]
