@@ -54,7 +54,7 @@ from palmer_penguins import __version__ as release
 
 # -- Project information -----------------------------------------------------
 
-project = "palmer_penguins"
+project = "kedro_penguins"
 copyright = "2020, QuantumBlack Visual Analytics Limited"
 author = "QuantumBlack"
 
