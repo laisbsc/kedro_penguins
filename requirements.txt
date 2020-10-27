@@ -5,18 +5,18 @@ appnope==0.1.0
 arrow
 async-generator==1.10
 async-timeout==3.0.1
-attrs @ file:///tmp/build/80754af9/attrs_1598374659300/work
+attrs
 backcall==0.2.0
 binaryornot==0.4.4
 boto3==1.14.58
 botocore==1.17.58
-cachetools @ file:///home/conda/feedstock_root/build_artifacts/cachetools_1593420445823/work
+cachetools
 certifi==2020.6.20
-cffi @ file:///opt/concourse/worker/volumes/live/0df07f09-9875-42dd-4a5c-3f900d1fbce2/volume/cffi_1598370762311/work
+cffi
 chardet==3.0.4
 click==7.1.2
 cookiecutter==1.6.0
-cryptography @ file:///opt/concourse/worker/volumes/live/823033e5-92f5-43de-539e-bdc7bc36c81a/volume/cryptography_1598892026131/work
+cryptography
 cycler==0.10.0
 decorator==4.4.2
 docopt==0.6.2
@@ -26,15 +26,15 @@ Flask==1.1.2
 fsspec==0.6.3
 future==0.18.2
 hdfs==2.5.8
-idna @ file:///tmp/build/80754af9/idna_1593446292537/work
-importlib-metadata @ file:///Users/runner/miniforge3/conda-bld/importlib-metadata_1593211384223/work
+idna
+importlib-metadata
 ipython==7.18.1
 ipython-genutils==0.2.0
 itsdangerous==1.1.0
 jedi==0.17.2
 Jinja2==2.11.2
 jinja2-time==0.2.0
-jmespath @ file:///tmp/build/80754af9/jmespath_1594304593830/work
+jmespath
 jupyter-client==5.3.5
 jupyter-core==4.6.3
 kedro==0.16.3
@@ -49,15 +49,15 @@ parso==0.7.1
 pexpect==4.8.0
 pickleshare==0.7.5
 Pillow==7.2.0
-pip-tools @ file:///home/conda/feedstock_root/build_artifacts/pip-tools_1596209188845/work
-pluggy @ file:///Users/runner/miniforge3/conda-bld/pluggy_1592827488528/work
+pip-tools
+pluggy
 poyo==0.5.0
 prompt-toolkit==3.0.7
 ptyprocess==0.6.0
 py4j==0.10.7
-pycparser @ file:///tmp/build/80754af9/pycparser_1594388511720/work
+pycparser
 Pygments==2.6.1
-pyOpenSSL @ file:///tmp/build/80754af9/pyopenssl_1594392929924/work
+pyOpenSSL
 pyparsing==2.4.7
 PySocks==1.7.1
 pyspark==2.4.6
@@ -66,18 +66,18 @@ python-json-logger==0.1.11
 pytz==2020.1
 PyYAML==5.3.1
 pyzmq==19.0.2
-requests @ file:///home/conda/feedstock_root/build_artifacts/requests_1592425495151/work
+requests
 s3fs==0.4.0
 s3transfer==0.3.3
 semver==2.10.2
 six==1.15.0
 toposort==1.5
 tornado==6.0.4
-traitlets @ file:///home/conda/feedstock_root/build_artifacts/traitlets_1599471676085/work
+traitlets
 urllib3==1.24.3
 wcwidth==0.2.5
 Werkzeug==1.0.1
 whichcraft==0.6.1
 wrapt==1.12.1
-yarl @ file:///opt/concourse/worker/volumes/live/33e35c6f-e0f3-4e8f-41a6-47322106cfc8/volume/yarl_1598045184895/work
+yarl
 zipp==3.1.0
