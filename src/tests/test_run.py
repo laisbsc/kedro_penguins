@@ -49,7 +49,7 @@ def project_context():
 
 class TestProjectContext:
     def test_project_name(self, project_context):
-        assert project_context.project_name == "palmer_penguins"
+        assert project_context.project_name == "kedro_penguins"
 
     def test_project_version(self, project_context):
         assert project_context.project_version == "0.16.3"

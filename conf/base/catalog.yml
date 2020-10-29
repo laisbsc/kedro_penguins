@@ -25,11 +25,11 @@ penguins_scatter_plot@matplotlib:
 #  versioned: True
 
 penguins_scatter_plot@byteform:
-  type: palmer_penguins.io.byte_dataset.ByteDataSet
+  type: kedro_penguins.io.byte_dataset.ByteDataSet
   filepath: data/scatter_plot.png
 
 penguins_scatter_plot_base64:
-  type: palmer_penguins.io.base64_dataset.Base64DataSet
+  type: kedro_penguins.io.base64_dataset.Base64DataSet
   filepath: data/scatter_plot_64.txt
 
 # local dataset 2
@@ -37,9 +37,9 @@ pandas_penguins_data:
   type: pandas.CSVDataSet
   filepath: data/01_raw/penguins_iter.csv
 
-spark_penguins_data:
-  type: spark.SparkDataSet
-  filepath: data/01_raw/penguins_iter.csv
-  file_format: csv
-  load_args:
-    header: true
+#spark_penguins_data:
+#  type: spark.SparkDataSet
+#  filepath: data/01_raw/penguins_iter.csv
+#  file_format: csv
+#  load_args:
+#    header: true

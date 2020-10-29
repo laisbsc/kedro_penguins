@@ -33,8 +33,8 @@ from typing import Dict
 
 from kedro.pipeline import Pipeline, node
 
-from palmer_penguins.pipelines import data_engineering as de
-from palmer_penguins.pipelines import data_science as ds
+from kedro_penguins.pipelines import data_engineering as de
+from kedro_penguins.pipelines import data_science as ds
 
 def create_pipelines(**kwargs) -> Dict[str, Pipeline]:
     """Create the project's pipeline.

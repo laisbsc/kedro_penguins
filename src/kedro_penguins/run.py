@@ -33,7 +33,7 @@ from typing import Dict
 from kedro.framework.context import KedroContext, load_package_context
 from kedro.pipeline import Pipeline
 
-from palmer_penguins.pipeline import create_pipelines
+from kedro_penguins.pipeline import create_pipelines
 
 
 class ProjectContext(KedroContext):
@@ -45,10 +45,10 @@ class ProjectContext(KedroContext):
 
     )
 
-    project_name = "palmer_penguins"
+    project_name = "kedro_penguins"
     # `project_version` is the version of kedro used to generate the project
     project_version = "0.16.3"
-    package_name = "palmer_penguins"
+    package_name = "kedro_penguins"
 
     def _get_pipelines(self) -> Dict[str, Pipeline]:
         return create_pipelines()
