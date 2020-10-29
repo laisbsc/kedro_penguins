@@ -29,7 +29,7 @@
 from setuptools import find_packages, setup
 
 entry_point = (
-    "palmer_penguins = palmer_penguins.run:run_package"
+    "kedro_penguins = kedro_penguins.run:run_package"
 )
 
 
@@ -45,7 +45,7 @@ with open("requirements.txt", "r", encoding="utf-8") as f:
             requires.append(req)
 
 setup(
-    name="palmer_penguins",
+    name="kedro_penguins",
     version="0.1",
     packages=find_packages(exclude=["tests"]),
     entry_points={"console_scripts": [entry_point]},

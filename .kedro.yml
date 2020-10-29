@@ -1,1 +1,1 @@
-context_path: palmer_penguins.run.ProjectContext
+context_path: kedro_penguins.run.ProjectContext
