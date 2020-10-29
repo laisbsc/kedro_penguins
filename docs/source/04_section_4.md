@@ -8,7 +8,7 @@ penguins_scatter_plot@matplotlib:
   type: kedro.extras.datasets.matplotlib.MatplotlibWriter
   filepath: data/scatter_plot.png
 ```
-In the `src/palmer_penguins/pipelines/data_engineering/pipeline.py` also add the `@matplotlib` transcode to the output of `make_scatter_plot` node.  
+In the `src/kedro_penguins/pipelines/data_engineering/pipeline.py` also add the `@matplotlib` transcode to the output of `make_scatter_plot` node.  
 Your code should now look like this:  
 
 ```
@@ -72,14 +72,14 @@ class Base64DataSet(AbstractDataSet):
 Next, add the transcoded data catalog to the `catalog.yml` file, such as:
 ```
 penguins_scatter_plot@byteform:     #transcode that reads the .png file as byte string
-  type: palmer_penguins.io.byte_dataset.ByteDataSet
+  type: kedro_penguins.io.byte_dataset.ByteDataSet
   filepath: data/scatter_plot.png
 
 penguins_scatter_plot_base64:
-  type: palmer_penguins.io.base64_dataset.Base64DataSet
+  type: kedro_penguins.io.base64_dataset.Base64DataSet
   filepath: data/scatter_plot_64.txt
 ```
-Now, let's add those datasets into the pipelines. In `src/palmer_penguins/pipelines/data_engineering/pipeline.py` add another pipeline.
+Now, let's add those datasets into the pipelines. In `src/kedro_penguins/pipelines/data_engineering/pipeline.py` add another pipeline.
 ```
 node(
     lambda x: x,  # identity function since this node just encodes (no function)

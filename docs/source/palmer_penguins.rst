@@ -11,8 +11,8 @@ Subpackages
 
 .. toctree::
 
-    palmer_penguins.hooks
-    palmer_penguins.pipelines
+    kedro_penguins.hooks
+    kedro_penguins.pipelines
 
 Submodules
 ----------
@@ -20,7 +20,7 @@ Submodules
 palmer\_penguins.pipeline module
 --------------------------------
 
-.. automodule:: palmer_penguins.pipeline
+.. automodule:: kedro_penguins.pipeline
     :members:
     :undoc-members:
     :show-inheritance:
@@ -28,7 +28,7 @@ palmer\_penguins.pipeline module
 palmer\_penguins.run module
 ---------------------------
 
-.. automodule:: palmer_penguins.run
+.. automodule:: kedro_penguins.run
     :members:
     :undoc-members:
     :show-inheritance:

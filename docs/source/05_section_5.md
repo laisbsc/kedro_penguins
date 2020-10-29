@@ -37,7 +37,7 @@ The 'Walkthrough' window shown is great to get you more familiar with the suite 
 
 ### Link Kedro project to Great Expectations  
 #### Create a Custom dataset
-Under `src/<palmer_penguins>/hooks` create a python file. In this project, the file is named `great_expectations_hooks.py`. 
+Under `src/<kedro_penguins>/hooks` create a python file. In this project, the file is named `great_expectations_hooks.py`. 
 This file will hold the contents of a custom Dataset that will replicate the way Great Expectations generate the validators and runs the checks on the data types of the dataset. In this case, the check will be performed on both `pandas` and `Spark` datasets.  
 The snippet of code below illustrates where the datatypes are described.  
 ![snippet of code showing where the dataset types are specified](../images/hooks_pic.png)  
@@ -58,7 +58,7 @@ spark_penguins_data:
     header: true 
 ```
 
-#### Add nodes to `src/palmer_penguins/pipeline.py`  
+#### Add nodes to `src/kedro_penguins/pipeline.py`  
 Now, let's add the nodes to `pipelines.py`. 
 
 ```

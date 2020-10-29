@@ -1,4 +1,4 @@
-palmer_penguins
+kedro_penguins
 ===============
 
 .. toctree::

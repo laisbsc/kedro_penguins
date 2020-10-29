@@ -240,7 +240,7 @@
       "batch_kwargs": {
         "data_asset_name": "penguins_iter",
         "datasource": "pandas_penguins",
-        "path": "/Users/lais_carvalho/Desktop/projects/kedroid/kedro_penguins/palmer_penguins/great_expectations/../data/01_raw/penguins_iter.csv"
+        "path": "/Users/lais_carvalho/Desktop/projects/kedroid/kedro_penguins/kedro_penguins/great_expectations/../data/01_raw/penguins_iter.csv"
       },
       "created_at": 1599551434.7465641,
       "created_by": "BasicSuiteBuilderProfiler"
@@ -250,7 +250,7 @@
         "batch_kwargs": {
           "data_asset_name": "penguins_iter",
           "datasource": "pandas_penguins",
-          "path": "/Users/lais_carvalho/Desktop/projects/kedroid/kedro_penguins/palmer_penguins/great_expectations/../data/01_raw/penguins_iter.csv"
+          "path": "/Users/lais_carvalho/Desktop/projects/kedroid/kedro_penguins/kedro_penguins/great_expectations/../data/01_raw/penguins_iter.csv"
         },
         "batch_markers": {
           "ge_load_time": "20200908T075034.554826Z",

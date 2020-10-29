@@ -172,7 +172,7 @@ penguins_scatter_plot@matplotlib:
   type: kedro.extras.datasets.matplotlib.MatplotlibWriter
   filepath: data/scatter_plot.png
 ```
-In the `src/palmer_penguins/pipelines/data_engineering/pipeline.py` also add the `@matplotlib` transcode to the output of `make_scatter_plot` node. Your code should now look like this:  
+In the `src/kedro_penguins/pipelines/data_engineering/pipeline.py` also add the `@matplotlib` transcode to the output of `make_scatter_plot` node. Your code should now look like this:  
 ```
 node(
     make_scatter_plot,
@@ -234,14 +234,14 @@ class Base64DataSet(AbstractDataSet):
 Next, add the transcoded data catalog to the `catalog.yml` file, such as:
 ```
 penguins_scatter_plot@byteform:     #transcode that reads the .png file as byte string
-  type: palmer_penguins.io.byte_dataset.ByteDataSet
+  type: kedro_penguins.io.byte_dataset.ByteDataSet
   filepath: data/scatter_plot.png
 
 penguins_scatter_plot_base64:
-  type: palmer_penguins.io.base64_dataset.Base64DataSet
+  type: kedro_penguins.io.base64_dataset.Base64DataSet
   filepath: data/scatter_plot_64.txt
 ```
-Now, let's add those datasets into the pipelines. In `src/palmer_penguins/pipelines/data_engineering/pipeline.py` add another pipeline.
+Now, let's add those datasets into the pipelines. In `src/kedro_penguins/pipelines/data_engineering/pipeline.py` add another pipeline.
 ```
 node(
     lambda x: x,  # identity function since this node just encodes (no function)
@@ -287,7 +287,7 @@ The 'Walkthrough' window shown is great to get you more familiar with the suite 
 
 ### Link Kedro to Great Expectations  
 #### Creating a Custom dataset
-Under `src/<palmer_penguins>/hooks` create a python file. In this project, the file is named `great_expectations_hooks.py`. 
+Under `src/<kedro_penguins>/hooks` create a python file. In this project, the file is named `great_expectations_hooks.py`. 
 This file will hold the contents of a custom Dataset that will replicate the way Great Expectations generate the validators and runs the checks on the data types of the dataset. In this case, the check will be performed on both `pandas` and `Spark` datasets.  
 The snippet of code below illustrates where the datatypes are described.  
 ![snippet of code showing where the dataset types are specified](docs/images/hooks_pic.png)  
@@ -308,7 +308,7 @@ spark_penguins_data:
     header: true 
 ```
 
-#### Add nodes to `src/palmer_penguins/pipeline.py`  
+#### Add nodes to `src/kedro_penguins/pipeline.py`  
 Now, let's add the nodes to `pipelines.py`. In the return
 ```
 "__ge_pipeline__": Pipeline([

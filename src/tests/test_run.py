@@ -39,7 +39,7 @@ from pathlib import Path
 
 import pytest
 
-from palmer_penguins.run import ProjectContext
+from kedro_penguins.run import ProjectContext
 
 
 @pytest.fixture

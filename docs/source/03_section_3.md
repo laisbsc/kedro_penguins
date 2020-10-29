@@ -72,7 +72,7 @@ penguins_scatter_plot:
 ```
 Now, let's combine everything into a data pipeline.  
 
-In the `src/palmer_penguins/pipelines/data_engineering/pipeline.py` file add a node to the pipeline. Start by importing `make_scatter_plot` from `.nodes`.  
+In the `src/kedro_penguins/pipelines/data_engineering/pipeline.py` file add a node to the pipeline. Start by importing `make_scatter_plot` from `.nodes`.  
 
 Next, add the node:
 ```

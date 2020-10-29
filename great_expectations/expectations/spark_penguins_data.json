@@ -8,7 +8,7 @@
         "batch_kwargs": {
           "data_asset_name": "penguins_iter",
           "datasource": "spark_data_2",
-          "path": "/Users/lais_carvalho/Desktop/projects/kedroid/kedro_penguins/palmer_penguins/great_expectations/../data/01_raw/penguins_iter.csv"
+          "path": "/Users/lais_carvalho/Desktop/projects/kedroid/kedro_penguins/kedro_penguins/great_expectations/../data/01_raw/penguins_iter.csv"
         },
         "batch_markers": null,
         "batch_parameters": null,
