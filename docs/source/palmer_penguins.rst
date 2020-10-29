@@ -1,7 +1,7 @@
 palmer\_penguins package
 ========================
 
-.. automodule:: palmer_penguins
+.. automodule:: kedro_penguins
     :members:
     :undoc-members:
     :show-inheritance:

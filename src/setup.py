@@ -29,6 +29,7 @@
 from setuptools import find_packages, setup
 
 entry_point = (
+    ""
     "kedro_penguins = kedro_penguins.run:run_package"
 )
 

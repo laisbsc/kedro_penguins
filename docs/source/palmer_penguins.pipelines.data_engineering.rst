@@ -1,7 +1,7 @@
 palmer\_penguins.pipelines.data\_engineering package
 ====================================================
 
-.. automodule:: palmer_penguins.pipelines.data_engineering
+.. automodule:: kedro_penguins.pipelines.data_engineering
     :members:
     :undoc-members:
     :show-inheritance:
